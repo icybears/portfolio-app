@@ -26,4 +26,26 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getEmail ()
+    {
+        return $this->email;
+    }
+    public function getFullName() 
+    {
+        return $this->fullName;
+    }
+    public function getOccupation()
+    {
+        return $this->occupation;
+    }
+    public function getDescription()
+    {
+        return $this->description;
+    }
+    public function isAuthenticated() {
+
+        return $this->id == auth()->id();
+
+    }
 }
