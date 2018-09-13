@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Log;
 
 class UsersController extends Controller
 {
+    
     public function show($username){
 
         $user = User::findByUsernameOrFail($username);
@@ -19,7 +20,21 @@ class UsersController extends Controller
     {
         $user = User::findByUsernameOrFail($username);
 
-        dd(request());
+        $this->validate(request(),
+		[
+			'fullName' => 'min:2|max:60',
+            'occupation' => 'max:120',
+            'description' => 'max:300'
+		
+        ]);
+
+        $user->update([
+                        'fullName' => request('fullName'),
+                        'occupation' => request('occupation'),
+                        'description' => request('description')
+                    ]);
+
+        return redirect('/');
     }
 
    

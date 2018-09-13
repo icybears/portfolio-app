@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','fullName', 'occupation', 'description'
     ];
 
     /**
@@ -49,6 +49,7 @@ class User extends Authenticatable
 
     }
 
+   
     static public function findByUsernameOrFail($username) {
 
         return static::where('name', $username)->firstOrFail();

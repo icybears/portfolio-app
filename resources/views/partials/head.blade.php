@@ -9,3 +9,5 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>Sabercrafts</title>
 </head>
+
+<body>
