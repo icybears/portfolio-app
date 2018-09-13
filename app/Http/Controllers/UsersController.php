@@ -10,8 +10,17 @@ class UsersController extends Controller
 {
     public function show($username){
 
-        $user = User::where('name', $username)->firstOrFail();
+        $user = User::findByUsernameOrFail($username);
 
         return view('test', compact('user'));
     }
+
+    public function editAbout($username) 
+    {
+        $user = User::findByUsernameOrFail($username);
+
+        dd(request());
+    }
+
+   
 }

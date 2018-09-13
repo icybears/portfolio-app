@@ -48,4 +48,9 @@ class User extends Authenticatable
         return $this->id == auth()->id();
 
     }
+
+    static public function findByUsernameOrFail($username) {
+
+        return static::where('name', $username)->firstOrFail();
+    }
 }

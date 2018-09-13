@@ -1,8 +1,9 @@
 @extends('layouts.main')
 
 @section('content')
+
 <div class="row">
-    
+       
                 <section id="side" class=" col-md-4">
     
                    @include('user.partials.about')

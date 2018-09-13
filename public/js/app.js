@@ -9,4 +9,3 @@ function sendForm(formId){
     
 }
 
-console.log('hello');

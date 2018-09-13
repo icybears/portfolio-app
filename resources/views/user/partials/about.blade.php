@@ -1,6 +1,9 @@
+
 <div id="about" class="shadow-sm bg-white pl-2">
+    
         @if($user->isAuthenticated())
-        <button type="button" class="btn btn-secondary">Edit</button>
+        @include('modals.edit-about')
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#editAbout">Edit</button>
         @endif
     <div class="profileImg">
         <img src="https://picsum.photos/200/200/?random" alt="" class="d-block mx-auto rounded-circle">
