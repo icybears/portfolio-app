@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -27,6 +28,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function socialLinks()
+    {
+       return $this->hasMany(SocialLink::class);
+    }
+    public function getUsername()
+    {
+        return $this->name;
+    }
     public function getEmail ()
     {
         return $this->email;
@@ -43,10 +52,39 @@ class User extends Authenticatable
     {
         return $this->description;
     }
+    public function getImageUrl()
+    {
+        return Storage::url('user_image/' . $this->image);
+    }
+    public function setImage($image)
+    {
+        $uploadedImage = $image;
+        
+        $imageName = $this->id . time() . "." . $uploadedImage->getClientOriginalExtension();
+
+        try{
+            Storage::disk('public')
+                ->put("user_image/$imageName", file_get_contents($uploadedImage));
+        } catch(\Exception $e) {
+            echo 'Problems storing the image';
+            
+        }
+
+        $this->deleteOldImage();
+        $this->image = $imageName;
+        $this->save();
+    }
     public function isAuthenticated() {
 
         return $this->id == auth()->id();
 
+    }
+
+    private function deleteOldImage() {
+        if($this->image != 'default.png')
+        {
+            Storage::disk('public')->delete($this->getImageUrl());
+        }
     }
 
    

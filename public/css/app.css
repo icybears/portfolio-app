@@ -29,3 +29,20 @@ h1{
 #projects{
     margin-bottom:20px;
 }
+
+#imgPreviewWrapper{
+    width:200px;
+    margin: auto;
+}
+
+#imgPreview{
+    width:100%;
+}
+
+#profileImg{
+    width:200px;
+    margin:auto;
+}
+#profileImg > img{
+    width:100%;
+}

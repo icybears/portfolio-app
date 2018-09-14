@@ -9,8 +9,27 @@ editAbout
 @endsection
 
 @section('modal-body')
-<form id="edit-about" method="post" action="{{ auth()->user()->name . '/about/edit' }}">
+<form id="edit-about" method="post" enctype="multipart/form-data" action="{{ auth()->user()->name . '/about/edit' }}">
     @csrf
+
+    <div id="imgPreviewWrapper">
+        <img id="imgPreview" class="d-block mx-auto rounded-circle" src="{{ $user->getImageUrl() }}" alt="{{ $user->getUsername() . ' profile picture' }}">
+    </div>
+    <div class="form-group">
+
+        <label  for="image">Profile Picture</label>
+        <input type="file" name="image" accept=".png, .jpg, .jpeg" class="form-control-file {{ $errors->has('image') ? ' is-invalid' : '' }}" id="image"
+        onchange="document.getElementById('imgPreview').src = window.URL.createObjectURL(this.files[0])"
+        >
+        
+        @if ($errors->has('image'))
+        <span class="invalid-feedback">
+            <strong>{{ $errors->first('image') }}</strong>
+        </span>
+        @endif
+    
+    </div>
+
     <div class="form-group">
         <label for="fullName">Full Name</label>
         <input type="text" class="form-control {{ $errors->has('fullName') ? ' is-invalid' : '' }}" id="fullName" name="fullName" placeholder="Who you are" value="{{ $user->fullName or old('fullName') }} ">
