@@ -2,24 +2,24 @@
 
 @section('modal-id')
 editSocialsModal
-@endsection
+@overwrite
 
 @section('modal-title')
     Manage your Social Links
-@endsection
+@overwrite
 
 @section('modal-body')
-
-@endsection
+    <h1>Hello</h1>
+@overwrite
 
 @section('modal-footer')
 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
   <button type="button" class="btn btn-primary" onclick="sendForm('editSocialsForm')">Save changes</button>
-@if( $errors->any() )
-<script>
-   window.onload = function () {
-    $('#editSocials').modal('show');
-   }
-</script>
+  @if( $errors->any() )
+  <script>
+     window.onload = function () {
+      $('#editSocialsModal').modal('show');
+     }
+  </script>
 @endif
-@endsection
+@overwrite
