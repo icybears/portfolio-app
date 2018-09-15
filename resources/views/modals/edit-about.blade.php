@@ -1,7 +1,7 @@
 @extends('modals.generic')
 
 @section('modal-id')
-editAbout
+editAboutModal
 @endsection
 
 @section('modal-title')
@@ -9,7 +9,7 @@ editAbout
 @endsection
 
 @section('modal-body')
-<form id="edit-about" method="post" enctype="multipart/form-data" action="{{ auth()->user()->name . '/about/edit' }}">
+<form id="editAboutForm" method="post" enctype="multipart/form-data" action="{{ auth()->user()->name . '/about/edit' }}">
     @csrf
 
     <div id="imgPreviewWrapper">
@@ -66,11 +66,11 @@ editAbout
 
 @section('modal-footer')
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" onclick="sendForm('edit-about')">Save changes</button>
+              <button type="button" class="btn btn-primary" onclick="sendForm('editAboutForm')">Save changes</button>
          @if( $errors->any() )
             <script>
                window.onload = function () {
-                $('#editAbout').modal('show');
+                $('#editAboutModal').modal('show');
                }
             </script>
          @endif

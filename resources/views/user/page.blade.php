@@ -8,9 +8,7 @@
     
                    @include('user.partials.about')
                    
-                    <button type="button" class="btn btn-success-outline">Contact me</button>
-                    <button type="button" class="btn btn-success-outline">Twitter</button>
-    
+                   @include('user.partials.socials')
                 </section>
     
                 <section id="center" class=" col-md-8 ">

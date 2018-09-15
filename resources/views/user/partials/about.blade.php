@@ -3,7 +3,7 @@
     
         @if($user->isAuthenticated())
         @include('modals.edit-about')
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#editAbout">Edit</button>
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#editAboutModal">Edit</button>
         @endif
     <div id="profileImg">
         <img src="{{ $user->getImageUrl()}}" alt="{{ $user->getUsername() . ' Image' }}" class="d-block mx-auto rounded-circle">

@@ -81,9 +81,10 @@ class User extends Authenticatable
     }
 
     private function deleteOldImage() {
+        
         if($this->image != 'default.png')
         {
-            Storage::disk('public')->delete($this->getImageUrl());
+            Storage::disk('public')->delete('user_image/' . $this->image);
         }
     }
 
