@@ -32,6 +32,10 @@ class User extends Authenticatable
     {
        return $this->hasMany(SocialLink::class);
     }
+    public function panels()
+    {
+        return $this->hasMany(Panel::class);
+    }
     public function getUsername()
     {
         return $this->name;

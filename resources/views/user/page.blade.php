@@ -10,9 +10,27 @@
                    
                    @include('user.partials.socials')
                 </section>
-    
+                
                 <section id="center" class=" col-md-8 ">
-                    <div id="experience" class="component bg-white shadow-sm">
+                   
+                    <div>
+                        <button type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#editPanelModal">NEW  PANEL</button>
+                    </div>
+                    @if(! empty($user->panels))
+                        @foreach($user->panels as $panel)
+                            <div class="component my-4 bg-white shadow-sm">
+                                <button type="button" onclick="sendForm()">X</button>
+                                <form id="deletePanelForm" action="{{ url($user->getUsername() . '/panel/' . $panel->id) }}">
+
+                                </form>
+                                    <h1>{{ $panel->getTitle() }}</h1>
+                                    <div>
+                                        {!! $panel->getParsedContent() !!}
+                                    </div>
+                            </div>
+                        @endforeach
+                    @endif
+                    <div id="experience" class="component my-4 bg-white shadow-sm">
                         <h1>Experience</h1>
                         <ul>
                             <li>Linux</li>
@@ -98,4 +116,5 @@
     
     
             </div>
+            @include('modals.edit-panel')
 @endsection
