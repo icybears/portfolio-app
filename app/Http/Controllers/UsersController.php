@@ -8,12 +8,17 @@ use Illuminate\Support\Facades\Log;
 
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+       
+        $this->middleware('isPageOwner')->only('editAbout');        
+    }
     
     public function show($username){
 
         $user = User::findByUsernameOrFail($username);
 
-        return view('test', compact('user'));
+        return view('user.page', compact('user'));
     }
 
     public function editAbout($username) 

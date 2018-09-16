@@ -8,6 +8,10 @@ use App\SocialLink;
 
 class SocialLinkController extends Controller
 {
+    public function __construct()
+    {
+        return  $this->middleware('isPageOwner');
+    }
     public function add($username)
     {
        $user =  User::findByUsernameOrFail($username);
