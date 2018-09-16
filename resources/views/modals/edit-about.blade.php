@@ -9,7 +9,7 @@ editAboutModal
 @endsection
 
 @section('modal-body')
-<form id="editAboutForm" method="post" enctype="multipart/form-data" action="{{ auth()->user()->name . '/about/edit' }}">
+<form id="editAboutForm" method="post" enctype="multipart/form-data" action="{{ auth()->user()->getUsername() . '/about/edit' }}">
     @csrf
 
     <div id="imgPreviewWrapper">

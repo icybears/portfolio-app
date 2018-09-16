@@ -17,22 +17,28 @@
                     {{ $user->getFullName() }}
                 </h3>
             @else
-                <button type="button" class="btn btn-secondary-outline">Your Full Name</button>
-            @endif
+             <div class="my-2">  
+                  <button type="button" class="btn btn-outline-dark mx-auto">Your Full Name</button>
+            </div>
+                 @endif
 
             @if( !is_null( $user->getOccupation() ) )
             <h6>
                 {{ $user->getOccupation() }}
             </h6>
         @else
-            <button type="button" class="btn btn-secondary-outline">Your Occupation</button>
+            <div class="my-2">
+                <button type="button" class="btn btn-outline-dark mx-auto">Your Occupation</button>
+            </div>
         @endif
         @if( !is_null( $user->getDescription() ) )
         <p>
                {{ $user->getDescription() }}
         </p>
         @else
-        <button type="button" class="btn btn-secondary-outline">Short Resume</button>
+        <div class="my-2">
+            <button type="button" class="btn btn-outline-dark mx-auto">Short Resume</button>
+        </div>
     @endif
         
     </div>

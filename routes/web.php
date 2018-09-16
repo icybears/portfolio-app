@@ -20,3 +20,7 @@ Route::get('/home','HomeController@index');
 Route::get('{username}', 'UsersController@show');
 
 Route::post('{username}/about/edit', 'UsersController@editAbout');
+
+Route::post('{username}/social/add', 'SocialLinkController@add');
+
+Route::delete('{username}/social/{id}', 'SocialLinkController@remove');
