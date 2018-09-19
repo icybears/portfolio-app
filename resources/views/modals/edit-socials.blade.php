@@ -16,8 +16,8 @@ editSocialsModal
     @foreach($user->socialLinks as $social)
         <li>{{ $social->label }}: {{$social->url}} 
             
-                <button type="button" {{ "onclick=sendForm('deleteLink". $social->id. "')"}}>X</button>
-                <form id="{{ 'deleteLink'.$social->id }}" method="post" action="{{ url($user->name . '/social/'. $social->id) }}">
+                <button type="button" onclick="sendForm( {{'`deleteLink' . $social->id . '`' }} )">X</button>
+                <form id="{{ 'deleteLink' . $social->id }}" method="post" action="{{ url($user->name . '/social/'. $social->id) }}">
                     @csrf
                     {{ method_field('delete') }}
                 </form>

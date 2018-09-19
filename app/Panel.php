@@ -13,6 +13,10 @@ class Panel extends Model
     {
         return $this->title;
     }
+    public function getContent()
+    {
+        return $this->content;
+    }
     public function getParsedContent()
     {
         $parsedown = new Parsedown();

@@ -23,9 +23,19 @@ class PanelController extends Controller
         return back();
     }
 
-    public function edit()
+    public function update($username, $panelId)
     {
+        $this->validate(request(),
+        [
+            'title' => 'min:2, max:120',
+            'content' => 'min:2'
+        ]);
 
+        auth()->user()->panels()->where('id', $panelId)->update([
+                                                    'title' => request('title'),
+                                                    'content' => request('content')
+                                                    ]);
+        return back();
     }
     public function delete($username, $panelId)
     {

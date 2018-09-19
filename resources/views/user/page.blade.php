@@ -14,15 +14,15 @@
                 <section id="center" class=" col-md-8 ">
                    
                     <div>
-                        <button type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#editPanelModal">NEW  PANEL</button>
+                        <button type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#addPanelModal">NEW  PANEL</button>
                     </div>
                     @if(! empty($user->panels))
                         @foreach($user->panels as $panel)
                             <div class="component my-4 bg-white shadow-sm">
-                                <button type="button" onclick="sendForm()">X</button>
-                                <form id="deletePanelForm" action="{{ url($user->getUsername() . '/panel/' . $panel->id) }}">
 
-                                </form>
+                               @include('user.partials.panel-dd')
+                                    @include('modals.confirm-delete-panel')
+                                    @include('modals.edit-panel')
                                     <h1>{{ $panel->getTitle() }}</h1>
                                     <div>
                                         {!! $panel->getParsedContent() !!}
@@ -116,5 +116,5 @@
     
     
             </div>
-            @include('modals.edit-panel')
+            @include('modals.add-panel')
 @endsection

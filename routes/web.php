@@ -25,4 +25,5 @@ Route::post('{username}/social/add', 'SocialLinkController@add');
 Route::delete('{username}/social/{id}', 'SocialLinkController@remove');
 
 Route::post('{username}/panel/add', 'PanelController@add');
+Route::patch('{username}/panel/{id}','PanelController@update');
 Route::delete('{username}/panel/{id}', 'PanelController@delete');
