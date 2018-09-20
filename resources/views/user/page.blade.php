@@ -44,60 +44,41 @@
             </section>
     
     
+</div>
+<div class="" style="width:100%">
+                    
+            <div class="mt-4">
+                <h1> Projects </h1>
+                <div>
+                    Filters:
+                    <select class="custom-select">
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                            </select>
+                </div>
             </div>
+    
             <div class="row">
-                <div id="projects">
-                    
-                                        <div class="mt-4">
-                                            <h1> Projects </h1>
-                                            <div>
-                                                Filters:
-                                                <select class="custom-select">
-                                                        <option selected>Open this select menu</option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
-                                                        <option value="3">Three</option>
-                                                      </select>
-                                            </div>
-                                        </div>
-                    
-                                        <div class="card-deck">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <div class="card shadow-sm">
-                                                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-                                                        <div class="card-body">
-                                                          <h5 class="card-title">Card title</h5>
-                                                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="card shadow-sm">
-                                                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-                                                        <div class="card-body">
-                                                          <h5 class="card-title">Card title</h5>
-                                                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="card shadow-sm">
-                                                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
-                                                        <div class="card-body">
-                                                          <h5 class="card-title">Card title</h5>
-                                                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                    
+                @foreach($user->projects as $project)
+                    @include('modals.edit-project')
+                    @include('modals.confirm-delete-project')
+                <div class="col-md-4">                                            
+                    <div class="card shadow-sm">
+                        @include('user.partials.project-dd')
+                        <img class="card-img-top" src=".../100px180/" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $project->title }}</h5>
+                            <p class="card-text">{{ $project->description }}</p>
+                            <p class="card-text"><small class="text-muted">tags:</small></p>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
             </div>
+                                
+</div>
                 
             @if($user->isAuthenticated())
                 @include('modals.add-project')

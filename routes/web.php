@@ -29,3 +29,5 @@ Route::patch('{username}/panels/{id}','PanelController@update');
 Route::delete('{username}/panels/{id}', 'PanelController@destroy');
 
 Route::post('{username}/projects','ProjectController@store');
+Route::patch('{username}/projects/{id}', 'ProjectController@update');
+Route::delete('{username}/projects/{id}', 'ProjectController@destroy');
