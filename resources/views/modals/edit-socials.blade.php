@@ -1,7 +1,7 @@
 @extends('modals.generic')
 
 @section('modal-id')
-editSocialsModal
+manageSocialsModal
 @overwrite
 
 @section('modal-title')
@@ -17,7 +17,7 @@ editSocialsModal
         <li>{{ $social->label }}: {{$social->url}} 
             
                 <button type="button" onclick="sendForm( {{'`deleteLink' . $social->id . '`' }} )">X</button>
-                <form id="{{ 'deleteLink' . $social->id }}" method="post" action="{{ url($user->name . '/social/'. $social->id) }}">
+                <form id="{{ 'deleteLink' . $social->id }}" method="post" action="{{ url($user->name . '/socials/'. $social->id) }}">
                     @csrf
                     {{ method_field('delete') }}
                 </form>
@@ -27,7 +27,7 @@ editSocialsModal
 
 @endif
 
-        <form method="post" action="{{ auth()->user()->getUsername() . '/social/add' }}">
+        <form method="post" action="{{ auth()->user()->getUsername() . '/socials' }}">
                 <div class="form-row align-items-center">
                   @csrf
                   <div class="col-sm-3 my-1 ">
@@ -54,7 +54,7 @@ editSocialsModal
   @if( $errors->any() )
   <script>
      window.onload = function () {
-      $('#editSocialsModal').modal('show');
+      $('#manageSocialsModal').modal('show');
      }
   </script>
     @endif

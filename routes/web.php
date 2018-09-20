@@ -21,9 +21,11 @@ Route::get('{username}', 'UsersController@show');
 
 Route::post('{username}/about/edit', 'UsersController@editAbout');
 
-Route::post('{username}/social/add', 'SocialLinkController@add');
-Route::delete('{username}/social/{id}', 'SocialLinkController@remove');
+Route::post('{username}/socials', 'SocialLinkController@store');
+Route::delete('{username}/socials/{id}', 'SocialLinkController@destroy');
 
-Route::post('{username}/panel/add', 'PanelController@add');
-Route::patch('{username}/panel/{id}','PanelController@update');
-Route::delete('{username}/panel/{id}', 'PanelController@delete');
+Route::post('{username}/panels', 'PanelController@store');
+Route::patch('{username}/panels/{id}','PanelController@update');
+Route::delete('{username}/panels/{id}', 'PanelController@destroy');
+
+Route::post('{username}/projects','ProjectController@store');

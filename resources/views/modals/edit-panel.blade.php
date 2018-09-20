@@ -9,7 +9,7 @@ Edit a Panel
 @overwrite
 
 @section('modal-body')
-<form id="editPanelForm{{$panel->id}}" method="post"  action="{{ auth()->user()->getUsername() . '/panel/'. $panel->id }}">
+<form id="editPanelForm{{$panel->id}}" method="post"  action="{{ auth()->user()->getUsername() . '/panels/'. $panel->id }}">
     @csrf
 
     {{ method_field('patch') }}

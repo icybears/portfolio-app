@@ -1,5 +1,5 @@
 
-<div id="about" class="shadow-sm bg-white pl-2">
+<div id="about" class="shadow-sm bg-white component ">
     
         @if($user->isAuthenticated())
         @include('modals.edit-about')

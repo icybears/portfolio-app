@@ -9,7 +9,7 @@ Create a Panel
 @overwrite
 
 @section('modal-body')
-<form id="addPanelForm" method="post"  action="{{ auth()->user()->getUsername() . '/panel/add' }}">
+<form id="addPanelForm" method="post"  action="{{ auth()->user()->getUsername() . '/panels' }}">
     @csrf
 
  

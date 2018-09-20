@@ -7,7 +7,7 @@ use App\Panel;
 
 class PanelController extends Controller
 {
-    public function add()
+    public function store()
     {
         $this->validate(request(),
         [
@@ -37,7 +37,7 @@ class PanelController extends Controller
                                                     ]);
         return back();
     }
-    public function delete($username, $panelId)
+    public function destroy($username, $panelId)
     {
         auth()->user()->panels()->where('id', $panelId)->delete();
         

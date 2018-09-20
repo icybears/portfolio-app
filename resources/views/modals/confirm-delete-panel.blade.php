@@ -10,7 +10,7 @@ Confirmation
 
 @section('modal-body')
 Are you sure you want to delete <strong>{{ $panel->getTitle() }}</strong> ?
-<form method="post" id="{{'deletePanelForm' . $panel->id}}" action="{{ url($user->getUsername() . '/panel/' . $panel->id) }}">
+<form method="post" id="{{'deletePanelForm' . $panel->id}}" action="{{ url($user->getUsername() . '/panels/' . $panel->id) }}">
         @csrf
         {{ method_field('delete') }}
     </form>

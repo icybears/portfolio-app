@@ -12,7 +12,7 @@ class SocialLinkController extends Controller
     {
         return  $this->middleware('isPageOwner');
     }
-    public function add($username)
+    public function store($username)
     {
        $user =  User::findByUsernameOrFail($username);
     
@@ -26,7 +26,7 @@ class SocialLinkController extends Controller
        return redirect('/');
     }
 
-    public function remove($username, $linkId)
+    public function destroy($username, $linkId)
     {
         $user =  User::findByUsernameOrFail($username);
 
