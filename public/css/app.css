@@ -49,3 +49,8 @@ h1{
 #profileImg > img{
     width:100%;
 }
+
+.component:first-child{
+    margin-top:0 !important;
+}
+

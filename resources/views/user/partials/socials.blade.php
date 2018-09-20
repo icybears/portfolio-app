@@ -1,5 +1,7 @@
 <div id="socials">
-    @include('modals.edit-socials')
+    @if($user->isAuthenticated())
+        @include('modals.edit-socials')
+    @endif
     @if(!empty($user->socialLinks))
 
 
@@ -8,7 +10,9 @@
     @endforeach
 
 
-@endif
-    <button type="button" data-toggle="modal" data-target="#editSocialsModal" class="btn btn-success-outline">Add Social Links</button>
+    @endif
+    @if($user->isAuthenticated())
+        <button type="button" data-toggle="modal" data-target="#editSocialsModal" class="btn btn-success-outline">Add Social Links</button>
+    @endif
 
 </div>
