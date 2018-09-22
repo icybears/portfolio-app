@@ -12,8 +12,8 @@ addProjectModal
 <form id="addProjectForm" method="post" enctype="multipart/form-data" action="{{ auth()->user()->getUsername() . '/projects' }}">
     @csrf
 
-    <div id="imgPreviewWrapper">
-        <img id="projectPreview" class="d-block mx-auto rounded-circle" src="{{ ""}}" alt="{{ 'Project image' }}">
+    <div id="projectPreviewWrapper">
+        <img id="projectPreview" class="d-block mx-auto" src="{{ \Storage::url('project_image/default.png') }}" alt="{{ 'Project image' }}">
     </div>
     <div class="form-group">
 
@@ -65,17 +65,17 @@ addProjectModal
     </div>
 
     <div class="form-group">
-        <label for="tags">Tag(s)</label>
-        <input type="text" class="form-control {{ $errors->has('tags') ? ' is-invalid' : '' }}" id="tags" name="tags" placeholder="Comma separated tags e.g: creative, mobile, ..." value="{{ old('tags') }}">
+            <label for="tags">Tag(s)</label>
+            <input type="text" class="form-control {{ $errors->has('tags') ? ' is-invalid' : '' }}" id="tags" name="tags" placeholder="Comma separated tags e.g: creative, mobile, ..." value="{{ old('tags') }}">
+            
+            @if ($errors->has('tags'))
+            <span class="invalid-feedback">
+                <strong>{{ $errors->first('tags') }}</strong>
+            </span>
         
-        @if ($errors->has('tags'))
-        <span class="invalid-feedback">
-            <strong>{{ $errors->first('tags') }}</strong>
-        </span>
-    
-        @endif
-      
-    </div>
+            @endif
+          
+        </div>
 
 </form>
 @overwrite

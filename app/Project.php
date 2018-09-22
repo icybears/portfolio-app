@@ -3,6 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+use App\Image;
+
 
 class Project extends Model
 {
@@ -27,6 +30,27 @@ class Project extends Model
     public function getImage()
     {
         return $this->image;
+    }
+    public function getTags()
+    {
+        return $this->tags;
+    }
+    public function getImageUrl()
+    {
+        return Storage::url('project_image/' . $this->image);
+    }
+    public function setImage($image)
+    {
+        $imageName =  Image::upload($image, "project_image");
+        
+        if($this->image != 'default.png'){
+            Image::delete($this->image, "project_image");
+        }
+
+        $this->image = $imageName;
+        $this->user_id = auth()->id();
+        $this->save();
+        
     }
 
 }

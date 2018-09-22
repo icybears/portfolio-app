@@ -63,6 +63,19 @@ editProjectModal{{$project->id}}
         </span>
         @endif
 </div>
+
+<div class="form-group">
+        <label for="tags">Tag(s)</label>
+        <input type="text" class="form-control {{ $errors->has('tags') ? ' is-invalid' : '' }}" id="tags" name="tags" placeholder="Comma separated tags e.g: creative, mobile, ..." value="{{ old('tags') ?? $project->getTags() }}">
+        
+        @if ($errors->has('tags'))
+        <span class="invalid-feedback">
+            <strong>{{ $errors->first('tags') }}</strong>
+        </span>
+    
+        @endif
+      
+    </div>
 </form>
 @overwrite
 

@@ -38,7 +38,7 @@ class UsersController extends Controller
         $user->update([
                         'fullName' => request('fullName'),
                         'occupation' => request('occupation'),
-                        'description' => request('description')
+                        'description' => request('description')               
                     ]);
 
         if(request('image'))

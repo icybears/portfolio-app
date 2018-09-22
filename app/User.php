@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Storage;
+use App\Image;
 
 class User extends Authenticatable
 {
@@ -66,34 +67,21 @@ class User extends Authenticatable
     }
     public function setImage($image)
     {
-        $uploadedImage = $image;
-        
-        $imageName = $this->id . time() . "." . $uploadedImage->getClientOriginalExtension();
-
-        try{
-            Storage::disk('public')
-                ->put("user_image/$imageName", file_get_contents($uploadedImage));
-        } catch(\Exception $e) {
-            echo 'Problems storing the image';
             
-        }
+            $imageName = Image::upload($image, "user_image");
 
-        $this->deleteOldImage();
-        $this->image = $imageName;
-        $this->save();
+            if($this->image != 'default.png'){
+                Image::delete($this->image, 'user_image');
+            }
+
+            $this->image = $imageName;
+            $this->save();
+       
     }
     public function isAuthenticated() {
 
         return $this->id == auth()->id();
 
-    }
-
-    private function deleteOldImage() {
-        
-        if($this->image != 'default.png')
-        {
-            Storage::disk('public')->delete('user_image/' . $this->image);
-        }
     }
 
    

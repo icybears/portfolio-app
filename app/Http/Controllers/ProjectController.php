@@ -21,13 +21,19 @@ class ProjectController extends Controller
             'image' => 'mimes:jpeg,jpg,png|dimensions:min_width=100,min_height=100,max_width:500,max_height:500'          
         ]);
 
+
         $project = new Project([
             'title' => request('title'),
             'description' => request('description'),
             'link' => request('link'),
             'tags' => request('tags'),
-            'image' => request('image')
+            'user_id' => $user->id
         ]);
+
+        if(request('image'))
+        {
+            $project->setImage(request('image'));
+        }
 
         $user->projects()->save($project);
 
@@ -52,9 +58,12 @@ class ProjectController extends Controller
                                                     'title' => request('title'),
                                                     'description' => request('description'),
                                                     'link' => request('link'),
-                                                    'tags' => request('tags'),
-                                                    'image' => request('image')                                                    
+                                                    'tags' => request('tags'),                                                   
                                                     ]);
+        if(request('image'))
+        {
+            Project::where('id', $projectId)->setImage(request('image'));
+        }
 
         return back();
     }
