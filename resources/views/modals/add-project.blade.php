@@ -32,7 +32,7 @@ addProjectModal
 
     <div class="form-group">
         <label for="title">Project title</label>
-        <input type="text" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" id="title" name="title" placeholder="The title of your project" value="{{ old('title') }} ">
+        <input type="text" class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}" id="title" name="title" placeholder="The title of your project" value="{{ old('title') }}">
         @if ($errors->has('title'))
         <span class="invalid-feedback">
             <strong>{{ $errors->first('title') }}</strong>
@@ -62,7 +62,21 @@ addProjectModal
             <strong>{{ $errors->first('link') }}</strong>
         </span>
         @endif
-</div>
+    </div>
+
+    <div class="form-group">
+        <label for="tags">Tag(s)</label>
+        <input type="text" class="form-control {{ $errors->has('tags') ? ' is-invalid' : '' }}" id="tags" name="tags" placeholder="Comma separated tags e.g: creative, mobile, ..." value="{{ old('tags') }}">
+        
+        @if ($errors->has('tags'))
+        <span class="invalid-feedback">
+            <strong>{{ $errors->first('tags') }}</strong>
+        </span>
+    
+        @endif
+      
+    </div>
+
 </form>
 @overwrite
 

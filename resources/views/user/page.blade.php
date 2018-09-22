@@ -24,21 +24,7 @@
                         <button type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#addProjectModal">NEW  Project</button>
                     </div>
 
-                    
-                    <div id="experience" class="component bg-white shadow-sm">
-                            <h1>Experience</h1>
-                            <ul>
-                                <li>Linux</li>
-                                <li>UML Modeling</li>
-                                <li>Relational Databases: SQL</li>
-                                <li>PHP and Frameworks (Laravel)</li>
-                                <li>ES5/ES6 and Tools (Webpack, NPM...) </li>
-                                <li>HTML5, CSS3, SCSS and Frameworks(Bootstrap, MaterializeCSS...)</li>
-                                <li>Mobile First Responsive Web Design</li>
-                                <li>C, C++ and JAVA</li>
-        
-                            </ul>
-                        </div>
+                 
     
             </div>
             </section>
@@ -71,7 +57,14 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $project->title }}</h5>
                             <p class="card-text">{{ $project->description }}</p>
-                            <p class="card-text"><small class="text-muted">tags:</small></p>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    tags: 
+                                    @foreach(explode(",", $project->tags) as $tag)
+                                        <span class="badge badge-pill badge-success">{{ $tag }}</span>
+                                    @endforeach
+                                    
+                                </small></p>
                         </div>
                     </div>
                 </div>

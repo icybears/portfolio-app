@@ -19,7 +19,8 @@ class CreateProjectsTable extends Migration
             $table->text('title');
             $table->text('description');
             $table->text('link')->nullable();
-            $table->text('image')->nullable();            
+            $table->text('image')->nullable();
+            $table->text('tags')->nullable();
             $table->timestamps();
         });
     }
