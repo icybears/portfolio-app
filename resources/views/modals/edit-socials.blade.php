@@ -9,7 +9,7 @@ manageSocialsModal
 @overwrite
 
 @section('modal-body')
-@if(empty($user->socialLinks))
+@if($user->socialLinks->isEmpty())
     <div><span class="strong">You have no social links</span></div>
 @else
 <ul>
@@ -26,18 +26,28 @@ manageSocialsModal
 </ul>
 
 @endif
-
+<br>
         <form method="post" action="{{ auth()->user()->getUsername() . '/socials' }}">
+            @if(session('source') == 'addSocial' && $errors->any())
+            <ul class="alert alert-danger" role="alert">
+              @foreach($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+            </ul>
+            @endif
                 <div class="form-row align-items-center">
+                  
                   @csrf
                   <div class="col-sm-3 my-1 ">
                     <label class="sr-only" for="label">Label</label>
-                    <input type="text" name="label" class="form-control" id="label" placeholder="Label">
+                    <input type="text" name="label" class="form-control {{ session('source') == 'addSocial' && $errors->has('label') ? ' is-invalid' : '' }}" id="label" placeholder="Label" value="{{ old('label') }}">
+                    
                   </div>
                   <div class="col-sm-7 my-1">
                     <label class="sr-only" for="url">URL</label>
                     <div class="input-group">
-                      <input type="text" name="url" class="form-control" id="url" placeholder="URL">
+                      <input type="text" name="url" class="form-control {{ session('source') == 'addSocial' && $errors->has('url') ? ' is-invalid' : '' }}" id="url" placeholder="URL" value="{{ old('url') }}">
+                     
                     </div>
                   </div>
                   <div class="col-auto my-1 ">
@@ -51,11 +61,11 @@ manageSocialsModal
 @section('modal-footer')
 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-  @if( $errors->any() )
+  @if( session('source') == 'addSocial' && $errors->any() )
   <script>
-     window.onload = function () {
+     $(document).ready(function () {
       $('#manageSocialsModal').modal('show');
-     }
+     });
   </script>
     @endif
 @overwrite

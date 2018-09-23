@@ -4,16 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Panel;
+use Validator;
 
 class PanelController extends Controller
 {
-    public function store()
+    public function __construct()
     {
-        $this->validate(request(),
-        [
-            'title' => 'min:2, max:120',
-            'content' => 'min:2'
-        ]);
+        return  $this->middleware('isPageOwner');
+    }
+    
+    public function store($username, Request $request)
+    {
+
+        $validator = Validator::make($request->all(), Panel::$rules);
+
+        if ($validator->fails()) {
+            return back()
+                        ->withErrors($validator)
+                        ->withInput()
+                        ->with('source', 'addPanel');
+        }
+   
 
         auth()->user()->panels()->create([
                         'title' => request('title'),
@@ -23,13 +34,17 @@ class PanelController extends Controller
         return back();
     }
 
-    public function update($username, $panelId)
+    public function update($username, $panelId, Request $request)
     {
-        $this->validate(request(),
-        [
-            'title' => 'min:2, max:120',
-            'content' => 'min:2'
-        ]);
+        $validator = Validator::make($request->all(), Panel::$rules);
+        
+                if ($validator->fails()) {
+                    return back()
+                                ->withErrors($validator)
+                                ->withInput()
+                                ->with('source', 'editPanel')
+                                ->with('panel', $panelId);
+                }
 
         auth()->user()->panels()->where('id', $panelId)->update([
                                                     'title' => request('title'),

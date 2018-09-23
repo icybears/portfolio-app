@@ -86,9 +86,11 @@ addProjectModal
              
          @if( session('source') == 'add' && $errors->any()  )
             <script>
-                window.onload = function () {
-                $('#addProjectModal').modal('show');
-                }
+                $(document).ready(function(){
+                    $('#addProjectModal').modal('show');
+                    
+                });
+                
             </script>
          @endif
 

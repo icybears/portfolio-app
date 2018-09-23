@@ -8,6 +8,11 @@ use Parsedown;
 class Panel extends Model
 {
     protected $fillable = ['title', 'content'];
+    
+    static public $rules =   [
+        'title' => 'min:2, max:120',
+        'content' => 'min:2'
+    ];
 
     public function getTitle()
     {

@@ -10,6 +10,9 @@
     
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <title>Sabercrafts</title>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>    
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </head>
 
 <body>

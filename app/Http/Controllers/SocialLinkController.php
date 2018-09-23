@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Validator;
 use App\SocialLink;
 
 class SocialLinkController extends Controller
@@ -12,26 +13,32 @@ class SocialLinkController extends Controller
     {
         return  $this->middleware('isPageOwner');
     }
-    public function store($username)
+    public function store($username, Request $request)
     {
-       $user =  User::findByUsernameOrFail($username);
-    
+        $validator = Validator::make($request->all(), SocialLink::$rules);
+        
+                if ($validator->fails()) {
+                    return back()
+                                ->withErrors($validator)
+                                ->withInput()
+                                ->with('source', 'addSocial');
+                }
+        
        $socialLink = new SocialLink([
                     'label' => request('label'),
                     'url' => request('url')
                     ]);
         
-       $user->socialLinks()->save( $socialLink );
+       auth()->user()->socialLinks()->save( $socialLink );
 
-       return redirect('/');
+       return back();
     }
 
     public function destroy($username, $linkId)
     {
-        $user =  User::findByUsernameOrFail($username);
+       
+        auth()->user()->socialLinks()->where('id', $linkId)->delete();
 
-        $user->socialLinks()->where('id', $linkId)->delete();
-
-        return redirect('/');
+        return back();
     }
 }

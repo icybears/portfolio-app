@@ -29,6 +29,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    static public $rules = [
+        'fullName' => 'min:2|max:60',
+        'occupation' => 'max:120',
+        'description' => 'max:300',
+        'image' => 'mimes:jpeg,jpg,png|dimensions:min_width=100,min_height=100,max_width:500,max_height:500'
+    ];
+
     public function projects()
     {
         return $this->hasMany(Project::class);

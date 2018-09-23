@@ -2,14 +2,17 @@
     var tagsString = "";
     var tagsInputField;
 
-    window.onload = function(){
-
-        projectTag();
-
-
-        setConfirmationModalInfo();
+    $(document).ready(function(){
+        console.log('fired app.js ');
         
-    }           
+        projectTag();
+        
+        
+                setConfirmationModalInfo();
+    });
+
+        
+             
         
         function sendForm(formId){
         
@@ -68,11 +71,13 @@
         function setConfirmationModalInfo()
         {
             var triggers = document.getElementsByClassName("project-dd");
+            var resetFormAction = document.getElementById('deleteProjectForm').action;
 
             Array.from(triggers).forEach(function(element) {
 
                 element.addEventListener('click', function(e){
 
+                    document.getElementById('deleteProjectForm').action = resetFormAction;                    
                     e.preventDefault();
                     var target = e.target.getAttribute('data-target');
                     var targetName = e.target.getAttribute('data-target-name');

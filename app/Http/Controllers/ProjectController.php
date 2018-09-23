@@ -10,11 +10,13 @@ use App\Project;
 class ProjectController extends Controller
 {
  
+    public function __construct()
+    {
+        return  $this->middleware('isPageOwner');
+    }
 
     public function store($username, Request $request)
     {
-        
-        $user = User::findByUsernameOrFail($username);
         
         $validator = Validator::make($request->all(), Project::$rules);
 
@@ -31,7 +33,7 @@ class ProjectController extends Controller
             'description' => request('description'),
             'link' => request('link'),
             'tags' => request('tags'),
-            'user_id' => $user->id
+            'user_id' => auth()->id()
         ]);
 
         if(request('image'))
@@ -39,7 +41,7 @@ class ProjectController extends Controller
             $project->setImage(request('image'));
         }
 
-        $user->projects()->save($project);
+        auth()->user()->projects()->save($project);
 
          return back();
 
@@ -47,19 +49,20 @@ class ProjectController extends Controller
 
     public function update($username, $projectId, Request $request)
     {
-        $user = User::findByUsernameOrFail($username);
-
+        
         $validator = Validator::make($request->all(), Project::$rules);
+        
+        
         
                 if ($validator->fails()) {
                     return back()
                                 ->withErrors($validator)
                                 ->withInput()
                                 ->with('source', 'edit')
-                                ->with('modal', $request->input('modal'));
+                                ->with('modal', $projectId);
                 }
 
-        $user->projects()->where('id', $projectId)->update([
+        auth()->user()->projects()->where('id', $projectId)->update([
                                                     'title' => request('title'),
                                                     'description' => request('description'),
                                                     'link' => request('link'),
@@ -75,9 +78,8 @@ class ProjectController extends Controller
 
     public function destroy($username, $projectId)
     {
-        $user = User::findByUsernameOrFail($username);
 
-        $user->projects()->where('id', $projectId)->delete();
+        auth()->user()->projects()->where('id', $projectId)->delete();
 
         return back();
     }

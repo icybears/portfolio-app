@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Validator;
 use Illuminate\Support\Facades\Log;
 
 class UsersController extends Controller
@@ -21,21 +22,22 @@ class UsersController extends Controller
         return view('user.page', compact('user'));
     }
 
-    public function editAbout($username) 
+    public function editAbout($username, Request $request) 
     {
-        $user = User::findByUsernameOrFail($username);
 
+        $validator = Validator::make($request->all(), User::$rules);
         
-        $this->validate(request(),
-		[
-			'fullName' => 'min:2|max:60',
-            'occupation' => 'max:120',
-            'description' => 'max:300',
-            'image' => 'mimes:jpeg,jpg,png|dimensions:min_width=100,min_height=100,max_width:500,max_height:500'
-		
-        ]);
+        
+        
+                if ($validator->fails()) {
+                    return back()
+                                ->withErrors($validator)
+                                ->withInput()
+                                ->with('source', 'editAbout');
+                        
+                }
 
-        $user->update([
+        auth()->user()->update([
                         'fullName' => request('fullName'),
                         'occupation' => request('occupation'),
                         'description' => request('description')               
