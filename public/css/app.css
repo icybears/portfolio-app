@@ -54,10 +54,11 @@ h1{
     margin-top:0 !important;
 }
 
-#projectPreview{
+#projectPreviewEdit,
+#projectPreviewAdd{
     width:100%;
 }
-#projectPreviewWrapper{
+.projectPreviewWrapper{
     width:100%;
 }
 

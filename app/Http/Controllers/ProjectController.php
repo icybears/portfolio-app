@@ -3,23 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
 use App\User;
 use App\Project;
 
 class ProjectController extends Controller
 {
-    public function store($username)
+ 
+
+    public function store($username, Request $request)
     {
+        
         $user = User::findByUsernameOrFail($username);
         
-        $this->validate(request(),
-        [
-            'title' => 'min:2|max:60',
-            'description' => 'max:120',
-            'link' => 'max:60',
-            'tags' => '',
-            'image' => 'mimes:jpeg,jpg,png|dimensions:min_width=100,min_height=100,max_width:500,max_height:500'          
-        ]);
+        $validator = Validator::make($request->all(), Project::$rules);
+
+        if ($validator->fails()) {
+            return back()
+                        ->withErrors($validator)
+                        ->withInput()
+                        ->with('source', 'add');
+        }
 
 
         $project = new Project([
@@ -41,18 +45,19 @@ class ProjectController extends Controller
 
     }
 
-    public function update($username, $projectId)
+    public function update($username, $projectId, Request $request)
     {
         $user = User::findByUsernameOrFail($username);
 
-        $this->validate(request(),
-        [
-            'title' => 'min:2|max:60',
-            'description' => 'max:120',
-            'link' => 'max:60',
-            'tags' => '',
-            'image' => 'mimes:jpeg,jpg,png|dimensions:min_width=100,min_height=100,max_width:500,max_height:500'          
-        ]);
+        $validator = Validator::make($request->all(), Project::$rules);
+        
+                if ($validator->fails()) {
+                    return back()
+                                ->withErrors($validator)
+                                ->withInput()
+                                ->with('source', 'edit')
+                                ->with('modal', $request->input('modal'));
+                }
 
         $user->projects()->where('id', $projectId)->update([
                                                     'title' => request('title'),

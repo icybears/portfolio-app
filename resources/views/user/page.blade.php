@@ -49,11 +49,11 @@
             <div class="row">
                 @foreach($user->projects as $project)
                     @include('modals.edit-project')
-                    @include('modals.confirm-delete-project')
+                    
                 <div class="col-md-4">                                            
-                    <div class="project card shadow-sm">
+                    <div class="project card shadow-sm" data-target="{{$project->getId()}}">
                         @include('user.partials.project-dd')
-                        <img class="card-img-top" src="{{ $project->getImageUrl() }}" alt="Card image cap">
+                        <img class="card-img-top" src="{{ $project->getImageUrl() }}" alt="{{$project->title . ' image' }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ $project->title }}</h5>
                             <p class="card-text">{{ $project->description }}</p>
@@ -68,6 +68,7 @@
                         </div>
                     </div>
                 </div>
+         
                 @endforeach
             </div>
                                 
@@ -76,5 +77,6 @@
             @if($user->isAuthenticated())
                 @include('modals.add-project')
                 @include('modals.add-panel')
+                @include('modals.confirm-delete-project')
             @endif
 @endsection

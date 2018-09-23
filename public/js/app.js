@@ -1,20 +1,13 @@
 
     var tagsString = "";
-    var tagsInput = document.getElementById('tags');
+    var tagsInputField;
 
     window.onload = function(){
 
-        $('#tags').tagsInput();
+        projectTag();
 
-        var tagsContainer = document.getElementById('tags_tagsinput');
-        
-        
-        var observer = new MutationObserver(mutationCallback);
-         
-        observer.observe(tagsContainer, {
-           childList: true,
-         });
-        
+
+        setConfirmationModalInfo();
         
     }           
         
@@ -39,7 +32,9 @@
                     
                     }
                });
-            addStringToElementValue(removeTrailingComma(tagsString), tagsInput);
+
+               
+            addStringToElementValue(removeTrailingComma(tagsString), tagsInputField);
         }
         
         function addStringToElementValue(str, input)
@@ -53,5 +48,41 @@
         }
   
 
+        function projectTag(projectId = ""){
+            tagsString = "";
+            tagsInputField = document.getElementById('tags' + projectId);
+
+            $('#tags' + projectId).tagsInput();
+
+            var tagsContainer = document.getElementById('tags' + projectId +'_tagsinput');
+
+            var observer = new MutationObserver(mutationCallback);
+
+            observer.observe(tagsContainer, {
+                childList: true,
+              });
+        }
 
 
+
+        function setConfirmationModalInfo()
+        {
+            var triggers = document.getElementsByClassName("project-dd");
+
+            Array.from(triggers).forEach(function(element) {
+
+                element.addEventListener('click', function(e){
+
+                    e.preventDefault();
+                    var target = e.target.getAttribute('data-target');
+                    var targetName = e.target.getAttribute('data-target-name');
+
+                    document.getElementById('confirmed-project-title').textContent = targetName;
+                    document.getElementById('deleteProjectForm').action += '/' + target;
+
+
+                });
+              });
+
+
+        }

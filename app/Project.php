@@ -11,6 +11,14 @@ class Project extends Model
 {
     protected $fillable = ['title','description','link','image','tags'];
 
+    static public $rules =  [
+        'title' => 'min:2|max:60',
+        'description' => 'min:2|max:120',
+        'link' => 'max:60',
+        'tags' => '',
+        'image' => 'mimes:jpeg,jpg,png|dimensions:min_width=100,min_height=100,max_width:500,max_height:500'          
+    ];
+
     public function getId()
     {
         return $this->id;
