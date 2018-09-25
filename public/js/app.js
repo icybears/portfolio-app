@@ -3,12 +3,11 @@
     var tagsInputField;
 
     $(document).ready(function(){
-        console.log('fired app.js ');
         
         projectTag();
         
         
-                setConfirmationModalInfo();
+        setConfirmationModalInfo();
     });
 
         
@@ -71,13 +70,13 @@
         function setConfirmationModalInfo()
         {
             var triggers = document.getElementsByClassName("project-dd");
-            var resetFormAction = document.getElementById('deleteProjectForm').action;
+            var formActionReset = document.getElementById('deleteProjectForm').action;
 
             Array.from(triggers).forEach(function(element) {
 
                 element.addEventListener('click', function(e){
 
-                    document.getElementById('deleteProjectForm').action = resetFormAction;                    
+                    document.getElementById('deleteProjectForm').action = formActionReset;                    
                     e.preventDefault();
                     var target = e.target.getAttribute('data-target');
                     var targetName = e.target.getAttribute('data-target-name');

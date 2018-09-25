@@ -1,7 +1,7 @@
 <div class="dropdown ">
         <a class="btn btn-secondary dropdown-toggle btn-sm float-right project-dd" data-target="{{$project->getId()}}" data-target-name="{{ $project->getTitle() }}" href="" role="button" id="dropdownMenuLink{{$project->getId()}}" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
-              Options
+            <i class="fas fa-cog"></i>
             </a>
     
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink{{$project->getId()}}">
