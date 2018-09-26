@@ -4,9 +4,6 @@
 
     $(document).ready(function(){
         
-        //  projectTag();
-        
-        // setConfirmationModalInfo();
 
         listenForSortingEvents();
 
@@ -16,9 +13,8 @@
         
              
         
-        function sendForm(formId){
-        
-                // this.preventDefault();
+        function sendForm(formId, btn){
+                btn.disabled = true;
                 document.getElementById(formId).submit();
                 
         }

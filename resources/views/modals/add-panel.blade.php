@@ -41,7 +41,7 @@ Create a Panel
 
 @section('modal-footer')
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-success" onclick="sendForm('addPanelForm')">Add</button>
+              <button type="button" class="btn btn-success" onclick="sendForm('addPanelForm',this)">Add</button>
          @if( session('source') == 'addPanel' && $errors->any() )
             <script>
                $(document).ready(function () {

@@ -41,7 +41,7 @@ Edit a Panel
 
 @section('modal-footer')
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" onclick="sendForm('editPanelForm{{$panel->id}}')">Save changes</button>
+              <button type="button" class="btn btn-primary" onclick="sendForm('editPanelForm{{$panel->id}}',this)">Save changes</button>
          @if( session('panel') == $panel->id && session('source') == 'editPanel' && $errors->any() )
             <script>
                $(document).ready(function(){

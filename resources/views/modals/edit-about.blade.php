@@ -66,7 +66,7 @@ editAboutModal
 
 @section('modal-footer')
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" onclick="sendForm('editAboutForm')">Save changes</button>
+              <button type="button" class="btn btn-primary" onclick="sendForm('editAboutForm', this)">Save changes</button>
          @if( session('source') == 'editAbout' && $errors->any() )
             <script>
                $(document).ready(function () {

@@ -70,7 +70,7 @@ class ProjectController extends Controller
                                                     ]);
         if(request('image'))
         {
-            Project::where('id', $projectId)->setImage(request('image'));
+           Project::find($projectId)->setImage(request('image'));
         }
 
         return back();

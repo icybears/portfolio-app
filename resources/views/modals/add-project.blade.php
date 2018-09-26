@@ -82,7 +82,7 @@ addProjectModal
 
 @section('modal-footer')
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" onclick="sendForm('addProjectForm')">Save changes</button>
+              <button type="button" class="btn btn-primary" onclick="sendForm('addProjectForm', this)">Save changes</button>
              
          @if( session('source') == 'add' && $errors->any()  )
             <script>

@@ -18,6 +18,6 @@ Are you sure you want to delete <strong id="confirmed-project-title"></strong> ?
 
 @section('modal-footer')
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-danger" onclick="sendForm('deleteProjectForm')">Yes, delete</button>
+              <button type="button" class="btn btn-danger" onclick="sendForm('deleteProjectForm', this)">Yes, delete</button>
         
 @overwrite
