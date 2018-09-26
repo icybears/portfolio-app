@@ -4,10 +4,13 @@
 
     $(document).ready(function(){
         
-        projectTag();
+        //  projectTag();
         
-        
-        setConfirmationModalInfo();
+        // setConfirmationModalInfo();
+
+        listenForSortingEvents();
+
+
     });
 
         
@@ -89,4 +92,34 @@
               });
 
 
+        }
+
+        function sortProjectsByTag(tag)
+        {
+            tinysort('.project',{sortFunction:function(a,b){
+
+                var tagsA = a.elm.dataset.tags;
+                var tagsB = b.elm.dataset.tags;
+                var exp = new RegExp(tag);
+
+                if (exp.test(tagsA) && !exp.test(tagsB)) {
+                    return -1;
+                  }
+                if ( !exp.test(tagsA) && exp.test(tagsB)) {
+                    return 1;
+                  }
+                  return 0;
+                
+                } });
+            
+        }
+
+
+        function listenForSortingEvents()
+        {
+            document.getElementById('projects-sort').addEventListener('change', function(e){
+                
+                                sortProjectsByTag(e.target.value);
+                            
+                       });
         }

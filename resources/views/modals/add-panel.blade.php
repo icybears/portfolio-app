@@ -28,7 +28,7 @@ Create a Panel
 
     <div class="form-group">
             <label for="content">Content</label>
-           <textarea name="content" class="form-control {{ session('source') == 'addPanel' &&  $errors->has('content') ? ' is-invalid' : '' }}" id="content" placeholder="Panel content" rows="7">{{ old('content') }}</textarea>
+           <textarea  name="content" class="form-control {{ session('source') == 'addPanel' &&  $errors->has('content') ? ' is-invalid' : '' }}" id="content" placeholder="Panel content" data-provide="markdown" data-iconlibrary="fa-5" rows="8">{{ old('content') }}</textarea>
            @if (session('source') == 'addPanel' &&  $errors->has('content'))
            <span class="invalid-feedback">
                <strong>{{ $errors->first('content') }}</strong>

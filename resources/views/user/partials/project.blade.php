@@ -2,8 +2,8 @@
     @include('modals.edit-project')
 @endif
 
-<div class="col-md-4">                                            
-<div class="project card shadow-sm" data-target="{{$project->getId()}}">
+<div class=" project col-md-4 mb-4" data-tags="{{ $project->getTags() }}">                                            
+<div class=" card shadow-sm" data-target="{{$project->getId()}}">
     @if($user->isAuthenticated())
         @include('user.partials.project-dd')
     @endif
@@ -12,13 +12,13 @@
         <h5 class="card-title">{{ $project->title }}</h5>
         <p class="card-text">{{ $project->description }}</p>
         <p class="card-text">
-            <small class="text-muted">
+            <span class="text-muted">
                 tags: 
                 @foreach(explode(",", $project->tags) as $tag)
                     <span class="badge badge-pill badge-success">{{ $tag }}</span>
                 @endforeach
                 
-            </small></p>
+            </span></p>
     </div>
 </div>
 </div>

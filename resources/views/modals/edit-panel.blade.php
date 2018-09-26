@@ -28,7 +28,7 @@ Edit a Panel
 
     <div class="form-group">
             <label for="content">Content</label>
-           <textarea name="content" class="form-control {{ session('panel') == $panel->id && session('source') == 'editPanel' && $errors->has('content') ? ' is-invalid' : '' }}" id="content" placeholder="Panel content" rows="4">{{ old('content') ?? $panel->getContent() }}</textarea>
+           <textarea  name="content"  class="form-control {{ session('panel') == $panel->id && session('source') == 'editPanel' && $errors->has('content') ? ' is-invalid' : '' }}" id="content" placeholder="Panel content" rows="8" data-provide="markdown" data-iconlibrary="fa-5" >{{ old('content') ?? $panel->getContent() }}</textarea>
            @if (session('panel') == $panel->id && session('source') == 'editPanel' && $errors->has('content'))
            <span class="invalid-feedback">
                <strong>{{ $errors->first('content') }}</strong>

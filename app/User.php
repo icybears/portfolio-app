@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 use App\Image;
 
 class User extends Authenticatable
@@ -95,5 +96,28 @@ class User extends Authenticatable
     static public function findByUsernameOrFail($username) {
 
         return static::where('name', $username)->firstOrFail();
+    } 
+    
+    static public function getAllProjectsTags()
+    {
+        $tags = DB::table('projects')->pluck('tags');
+        $result = array();
+
+        foreach ($tags as $tagString) {
+            $tagsArray = explode(',', $tagString);
+
+            foreach($tagsArray as $tag) {
+                
+                if( !is_numeric( array_search($tag, $result) ) )
+                {
+                    $result[] = $tag;
+                } 
+        }
+
+        }
+        
+        return $result;
     }
+
+
 }

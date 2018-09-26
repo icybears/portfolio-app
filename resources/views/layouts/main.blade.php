@@ -1,6 +1,6 @@
 @include('partials.head')
 
-@include('partials.nav')
+<!-- @include('partials.nav') -->
     <main class="container mt-4">
         @yield('content')
     </main>
