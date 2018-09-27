@@ -98,9 +98,9 @@ class User extends Authenticatable
         return static::where('name', $username)->firstOrFail();
     } 
     
-    static public function getAllProjectsTags()
+    static public function getAllProjectsTags(User $user)
     {
-        $tags = DB::table('projects')->pluck('tags');
+        $tags = DB::table('projects')->where('user_id', $user->id)->pluck('tags');
         $result = array();
 
         foreach ($tags as $tagString) {
@@ -119,5 +119,25 @@ class User extends Authenticatable
         return $result;
     }
 
+    // public function getAllProjectsTags(User $user)
+    // {
+    //     $tags = DB::table('projects')->where('user_id', $user->getId())->pluck('tags');
+    //     $result = array();
+
+    //     foreach ($tags as $tagString) {
+    //         $tagsArray = explode(',', $tagString);
+
+    //         foreach($tagsArray as $tag) {
+                
+    //             if( !is_numeric( array_search($tag, $result) ) )
+    //             {
+    //                 $result[] = $tag;
+    //             } 
+    //     }
+
+    //     }
+        
+    //     return $result;
+    // }
 
 }

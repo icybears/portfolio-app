@@ -23,10 +23,10 @@
         function mutationCallback(mutations) {
                 
                 mutations.forEach(function(mutation) {
-    
+                        console.log(mutation);
                     if(mutation.removedNodes.length !== 0)
                     {
-                        tagsString = "";
+                        tagsString = '';
                     } else {
     
                     tagsString += mutation.addedNodes[0].textContent + ',';
@@ -63,8 +63,19 @@
                 childList: true,
               });
         }
+        // function updateTagsAndSendForm(projectId, formId, trigger)
+        // {
+        //    var tagsString = "";
+        //     var tagsInputField = document.getElementById('tags' + projectId);
+        //     var tagsContainer = document.getElementById('tags' + projectId +'_tagsinput');
 
+        //     document.querySelectorAll('tags' + projectId + '_tagsinput .tag-text').forEach(function(el) {
+        //         tagsString += el.textContent + ',';
+        //     });
+        //     addStringToElementValue(removeTrailingComma(tagsString), tagsInputField);
 
+        //     sendForm(formId, trigger)
+        // }
 
         function setConfirmationModalInfo()
         {
@@ -119,3 +130,12 @@
                             
                        });
         }
+
+//   function getFocus(inputId)
+//   {
+//     $('#editAboutModal').on('shown.bs.modal', function () {
+//         $('#'+inputId).focus();
+//     })
+
+//     $('#editAboutModal').off();
+//   }

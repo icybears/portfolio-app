@@ -8,16 +8,24 @@
     <script src="{{ asset('js/app.js') }}"></script>
     @if(auth()->check())
         @if(auth()->user()->isAuthenticated())
-        <script>
-              projectTag();
         
-              setConfirmationModalInfo();
-              
-            @foreach($user->projects as $project)
-                projectTag({{ $project->getId() }});
-               
-            @endforeach
+        <script>
+        
+            projectTag();
+
+            @if( count(auth()->user()->projects) > 0 )
+            
+                setConfirmationModalInfo();
+                
+                @foreach($user->projects as $project)
+                    projectTag({{ $project->getId() }});
+                @endforeach
+
+            @endif
+            
+
         </script>
+            
         @endif
     @endif
 </body>

@@ -18,7 +18,7 @@
                 </h3>
             @else
              <div class="my-2">  
-                  <button type="button" class="btn btn-outline-dark mx-auto">Your Full Name</button>
+                  <button type="button" class="btn btn-outline-dark mx-auto" data-toggle="modal" data-target="#editAboutModal">Your Full Name</button>
             </div>
                  @endif
 
@@ -28,7 +28,7 @@
             </h6>
         @else
             <div class="my-2">
-                <button type="button" class="btn btn-outline-dark mx-auto">Your Occupation</button>
+                <button type="button" class="btn btn-outline-dark mx-auto" data-toggle="modal" data-target="#editAboutModal">Your Occupation</button>
             </div>
         @endif
         @if( !is_null( $user->getDescription() ) )
@@ -37,7 +37,7 @@
         </p>
         @else
         <div class="my-2">
-            <button type="button" class="btn btn-outline-dark mx-auto">Short Resume</button>
+            <button type="button" class="btn btn-outline-dark mx-auto" data-toggle="modal" data-target="#editAboutModal">Short Resume</button>
         </div>
     @endif
         

@@ -18,6 +18,6 @@ Are you sure you want to delete <strong>{{ $panel->getTitle() }}</strong> ?
 
 @section('modal-footer')
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-danger" onclick="sendForm( {{'`deletePanelForm' . $panel->id . '`'}} )">Yes, delete</button>
+              <button type="button" class="btn btn-danger" onclick="sendForm( {{'`deletePanelForm' . $panel->id . '`,this'}} )">Yes, delete</button>
         
 @overwrite

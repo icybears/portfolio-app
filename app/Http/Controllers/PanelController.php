@@ -10,7 +10,8 @@ class PanelController extends Controller
 {
     public function __construct()
     {
-        return  $this->middleware('isPageOwner');
+          $this->middleware('isPageOwner');
+          
     }
     
     public function store($username, Request $request)

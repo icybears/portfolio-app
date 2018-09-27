@@ -27,7 +27,7 @@ manageSocialsModal
 
 @endif
 <br>
-        <form method="post" action="{{ auth()->user()->getUsername() . '/socials' }}">
+        <form id="manageSocialsForm" method="post" action="{{ auth()->user()->getUsername() . '/socials' }}">
             @if(session('source') == 'addSocial' && $errors->any())
             <ul class="alert alert-danger" role="alert">
               @foreach($errors->all() as $error)
@@ -51,7 +51,7 @@ manageSocialsModal
                     </div>
                   </div>
                   <div class="col-auto my-1 ">
-                    <button type="submit" class="btn btn-primary">Add</button>
+                    <button type="submit" class="btn btn-primary" onclick="sendForm('manageSocialsForm',this)">Add</button>
                   </div>
                 </div>
               </form>

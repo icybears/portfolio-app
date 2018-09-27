@@ -92,3 +92,7 @@ h1{
     width: 100%;
     padding: 3px;
 }
+.nav a,
+.nav a:link {
+    color:inherit;
+}

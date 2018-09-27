@@ -32,7 +32,7 @@ editAboutModal
 
     <div class="form-group">
         <label for="fullName">Full Name</label>
-        <input type="text" class="form-control {{ session('source') == 'editAbout' && $errors->has('fullName') ? ' is-invalid' : '' }}" id="fullName" name="fullName" placeholder="Who you are" value="{{ $user->fullName or old('fullName') }} ">
+        <input type="text" class="form-control {{ session('source') == 'editAbout' && $errors->has('fullName') ? ' is-invalid' : '' }}" id="fullName" name="fullName" placeholder="Who you are" value="{{ $user->fullName or old('fullName') }}">
         @if (session('source') == 'editAbout' && $errors->has('fullName'))
         <span class="invalid-feedback">
             <strong>{{ $errors->first('fullName') }}</strong>
