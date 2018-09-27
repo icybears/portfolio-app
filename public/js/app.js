@@ -131,11 +131,22 @@
                        });
         }
 
-//   function getFocus(inputId)
-//   {
-//     $('#editAboutModal').on('shown.bs.modal', function () {
-//         $('#'+inputId).focus();
-//     })
+        // function calculateLayout()
+        // {
+        //     var side = document.getElementById('side');
+        //     var sideBottomPos = side.getBoundingClientRect().bottom + window.scrollY;
+        //     var projects = document.getElementById('projects');
+        //     var projectsBottomPos = projects.getBoundingClientRect().bottom + window.scrollY;
 
-//     $('#editAboutModal').off();
-//   }
+        //     if(sideBottonPos - projectsBottomPos > 0){
+        //         // layout 1
+        //     } else {
+        //         // layout 2
+        //     }
+        // }
+
+        function layoutBreak(){
+            document.querySelectorAll('#layoutBreak .project').forEach(function(el){
+                el.className = 'project col-md-4 mb-4';
+            });
+        }

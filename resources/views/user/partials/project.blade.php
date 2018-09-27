@@ -2,7 +2,7 @@
     @include('modals.edit-project')
 @endif
 
-<div class=" project col-md-4 mb-4" data-tags="{{ $project->getTags() }}">                                            
+<div class=" project col-md-6 mb-4" data-tags="{{ $project->getTags() }}">                                            
 <div class=" card shadow-sm" data-target="{{$project->getId()}}">
     @if($user->isAuthenticated())
         @include('user.partials.project-dd')

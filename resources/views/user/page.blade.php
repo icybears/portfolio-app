@@ -18,9 +18,9 @@
 
                     @include('user.partials.panels')
     
-                    
+                    <div class="row">
                     @if((count($user->projects) > 0) )
-                     <div class="component my-4 bg-white shadow-sm">
+                     <div class="component my-4 bg-white shadow-sm col-md-12">
                             
                                     <h1> Projects </h1>
                                     Sort by Tags&nbsp;
@@ -32,10 +32,22 @@
                                     </select>
                         </div>
                     @endif
-                 
+                    </div>
+                    
+                    <div class="row">
+                            @foreach($user->projects as $key => $project) 
+                                @if($key > 1)
+                                   @break
+                                @endif
+                                @include('user.partials.project')    
+            
+                            @endforeach
+
+                    </div>
+                    
     
-            </div>
-            </section>
+                </section>
+               
     
     
 </div>
@@ -44,10 +56,11 @@
                     
             
     
-            <div class="row">
-                @foreach($user->projects as $project)
-                   
-                    @include('user.partials.project')    
+            <div id="layoutBreak" class="row">
+                @foreach($user->projects as $key => $project)
+                   @if($key > 1)
+                    @include('user.partials.project') 
+                   @endif
 
                 @endforeach
             </div>
