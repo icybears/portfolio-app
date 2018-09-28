@@ -6,7 +6,7 @@
 
 
     @foreach($user->socialLinks as $social)
-        <a class="btn" href="{{$social->url}}">{{ $social->label }}</a>
+        <a  class="socialLinkBtn text-muted" href="{{$social->url}}" target="_blank">{{ $social->label }}</a>
     @endforeach
 
 

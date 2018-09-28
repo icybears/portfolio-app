@@ -21,13 +21,9 @@
                     projectTag({{ $project->getId() }});
                 @endforeach
 
-            @endif
+            @endif            
 
-            @if(count(auth()->user()->projects) > 1 )
-                    layoutBreak();
-            @endif
-            
-
+            layoutProjects();
         </script>
             
         @endif

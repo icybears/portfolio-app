@@ -15,8 +15,8 @@ manageSocialsModal
 <ul>
     @foreach($user->socialLinks as $social)
         <li>{{ $social->label }}: {{$social->url}} 
-            
-                <button type="button" onclick="sendForm( {{'`deleteLink' . $social->id . '`,this' }} )">X</button>
+                <!-- <a href="" onclick="sendForm( {{'`deleteLink' . $social->id . '`,this' }} )"><i class="fas fa-times-circle"></i></a> -->
+                <button type="button" class="btn btn-sm btn-link" onclick="sendForm( {{'`deleteLink' . $social->id . '`,this' }} )"><i class="fas fa-times"></i></button>
                 <form id="{{ 'deleteLink' . $social->id }}" method="post" action="{{ url($user->name . '/socials/'. $social->id) }}">
                     @csrf
                     {{ method_field('delete') }}

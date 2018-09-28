@@ -1,12 +1,20 @@
 html, body{
     min-height:100%;
+    background-color: #d9eaf940;
+    /* eff6fd */
 }
 
 body {
-    background-color: #F3F3F3;
+    background-color: transparent;
+    padding-top:2.5em;
 }
 
-
+nav{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+}
 
 h1{
     font-weight: 300;
@@ -18,7 +26,7 @@ h1{
 
 
 .component{
-    padding:.5em;
+    padding:1.2em 2em;
     box-sizing: border-box;
 }
 
@@ -92,4 +100,63 @@ h1{
 .nav a,
 .nav a:link {
     color:inherit;
+}
+
+.shadow-sm{
+    /* box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12) !important; */
+    box-shadow: 0 2px 2px 0 hsl(210, 33%, 80%, .14), 0 3px 1px -2px hsl(210, 33%, 80%,.2), 0 1px 5px 0 hsl(210, 33%, 80%,.2) !important;    
+}
+.card {
+    border: none !important;
+}
+.socialLinkBtn{
+    display: inline-block;
+    padding: 5px;
+    margin-right:5px;
+    background: #FFFFFF;
+  
+    /* Font styles */
+    color: inherit;
+    /* font-weight: ; */
+    text-decoration: none;
+    position: relative;
+    box-shadow: 
+      1px 1px #CDE0F0,
+      2px 2px #CFDEEA,
+      3px 3px #C2D7E7;
+    transition: all 0.2s ease-in;
+}
+
+.socialLinkBtn:hover{
+    background: #FFFFFF;
+    text-decoration:none;
+    color:inherit;
+    box-shadow: none;
+    top: 3px;
+    left: 3px;
+}
+
+.inline-link {
+    display: inline-block;
+    margin: 0 0.2em;
+    padding: 3px;
+    background: #97CAF2;
+    border-radius: 2px;
+    transition: all 0.3s ease-out;
+  
+    /* Font styles */
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+  }
+
+  .inline-link:hover   { background: #53A7EA;
+color:white;
+text-decoration: none; }
+
+.noContent{
+    position: relative;
+    top:40%;
+    transform: translateY(-50%);
+    font-size: 2em;
 }
