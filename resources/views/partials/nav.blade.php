@@ -1,4 +1,4 @@
-<nav class="bg-white shadow-sm">
+<nav class="bg-transparent">
     <div class="container">
         <ul class="nav">
             <a class="navbar-brand" href="#">Forewords</a>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Validator;
 use App\User;
 use App\Project;
+use App\Image;
 
 class ProjectController extends Controller
 {
@@ -78,7 +79,11 @@ class ProjectController extends Controller
 
     public function destroy($username, $projectId)
     {
+        $imageName = Project::find($projectId)->getImage();
 
+        if($imageName !== 'default.png'){
+            Image::delete($imageName,'project_image');
+        }
         auth()->user()->projects()->where('id', $projectId)->delete();
 
         return back();

@@ -12,7 +12,7 @@
 
     @endif
     @if($user->isAuthenticated())
-        <button type="button" data-toggle="modal" data-target="#manageSocialsModal" class="btn btn-success-outline">My Social Links</button>
+        <button type="button" data-toggle="modal" data-target="#manageSocialsModal" class="btn btn-outline-success">My Social Links</button>
     @endif
 
 </div>

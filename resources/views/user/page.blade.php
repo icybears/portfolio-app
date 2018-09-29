@@ -16,7 +16,7 @@
                 <section id="center" class=" col-md-8 ">
                     
                     @if(count($user->projects) == 0 && count($user->panels) == 0)
-                        <div class="noContent text-muted align-middle text-center"><span>Nothing to display here.</span>
+                        <div class="noContent text-muted align-middle text-center font-weight-light"><span>Nothing to display here.</span>
                             @if($user->isAuthenticated())
                             <br>
                             You can <a  class="inline-link " href="" data-toggle="modal" data-target="#addPanelModal">add panels</a> or <a class="inline-link " href="" data-toggle="modal" data-target="#addProjectModal">add projects</a>
