@@ -79,7 +79,7 @@ class ProjectController extends Controller
 
     public function destroy($username, $projectId)
     {
-        $imageName = Project::find($projectId)->getImage();
+        $imageName = Project::findOrFail($projectId)->getImage();
 
         if($imageName !== 'default.png'){
             Image::delete($imageName,'project_image');

@@ -53,7 +53,7 @@ editAboutModal
 
     <div class="form-group">
             <label for="description">Description</label>
-           <textarea name="description" class="form-control {{ session('source') == 'editAbout' && $errors->has('description') ? ' is-invalid' : '' }}" id="description" placeholder="A short resume" rows="4">{{ $user->description or old('description') }}</textarea>
+           <textarea name="description" class="form-control {{ session('source') == 'editAbout' && $errors->has('description') ? ' is-invalid' : '' }}"  placeholder="A short resume" rows="4">{{ $user->description or old('description') }}</textarea>
            @if (session('source') == 'editAbout' && $errors->has('description'))
            <span class="invalid-feedback">
                <strong>{{ $errors->first('description') }}</strong>

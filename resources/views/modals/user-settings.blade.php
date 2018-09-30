@@ -44,7 +44,7 @@ User Settings
     
         <div class="form-group">
                 <label for="currentPassword">Your Current Password</label>
-                <input type="password" class="form-control {{ session('source') == 'changePassword' && $errors->has('currentPassword') ? ' is-invalid' : '' }}" id="currentPassword" name="currentPassword" placeholder="Your current password" >
+                <input type="password" class="form-control {{ session('source') == 'changePassword' && $errors->has('currentPassword') ? ' is-invalid' : '' }}"  name="currentPassword" placeholder="Your current password" >
                 @if (session('source') == 'changeUsername' && $errors->has('currentPassword'))
                 <span class="invalid-feedback">
                     <strong>{{ $errors->first('currentPassword') }}</strong>
@@ -90,7 +90,7 @@ User Settings
                     </div>
                 <div class="form-group">
                         <label for="currentPassword">Your Current Password</label>
-                        <input type="password" class="form-control {{ session('source') == 'changePassword' && $errors->has('currentPassword') ? ' is-invalid' : '' }}" id="currentPassword" name="currentPassword" placeholder="Your current password" >
+                        <input type="password" class="form-control {{ session('source') == 'changePassword' && $errors->has('currentPassword') ? ' is-invalid' : '' }}" name="currentPassword" placeholder="Your current password" >
                         @if (session('source') == 'changePassword' && $errors->has('currentPassword'))
                         <span class="invalid-feedback">
                             <strong>{{ $errors->first('currentPassword') }}</strong>

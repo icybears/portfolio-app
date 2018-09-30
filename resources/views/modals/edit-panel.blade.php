@@ -16,7 +16,7 @@ Edit a Panel
 
     <div class="form-group">
         <label for="title">Title</label>
-        <input type="text" class="form-control {{ session('panel') == $panel->id && session('source') == 'editPanel' && $errors->has('title') ? ' is-invalid' : '' }}" id="title" name="title" placeholder="Title of this panel" value="{{ old('title') ?? $panel->getTitle()}}">
+        <input type="text" class="form-control {{ session('panel') == $panel->id && session('source') == 'editPanel' && $errors->has('title') ? ' is-invalid' : '' }}"  name="title" placeholder="Title of this panel" value="{{ old('title') ?? $panel->getTitle()}}">
         @if (session('panel') == $panel->id && session('source') == 'editPanel' && $errors->has('title'))
         <span class="invalid-feedback">
             <strong>{{ $errors->first('title') }}</strong>
@@ -28,7 +28,7 @@ Edit a Panel
 
     <div class="form-group">
             <label for="content">Content</label>
-           <textarea  name="content"  class="form-control {{ session('panel') == $panel->id && session('source') == 'editPanel' && $errors->has('content') ? ' is-invalid' : '' }}" id="content" placeholder="Panel content" rows="8" data-provide="markdown" data-iconlibrary="fa-5" >{{ old('content') ?? $panel->getContent() }}</textarea>
+           <textarea  name="content"  class="form-control {{ session('panel') == $panel->id && session('source') == 'editPanel' && $errors->has('content') ? ' is-invalid' : '' }}" placeholder="Panel content" rows="8" data-provide="markdown" data-iconlibrary="fa-5" >{{ old('content') ?? $panel->getContent() }}</textarea>
            @if (session('panel') == $panel->id && session('source') == 'editPanel' && $errors->has('content'))
            <span class="invalid-feedback">
                <strong>{{ $errors->first('content') }}</strong>

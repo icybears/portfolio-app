@@ -7,6 +7,7 @@
 
         listenForSortingEvents();
 
+        layoutProjects();
 
     });
 
@@ -23,7 +24,7 @@
         function mutationCallback(mutations) {
                 
                 mutations.forEach(function(mutation) {
-                        console.log(mutation);
+                        // console.log(mutation);
                     if(mutation.removedNodes.length !== 0)
                     {
                         tagsString = '';
@@ -52,16 +53,19 @@
         function projectTag(projectId = ""){
             tagsString = "";
             tagsInputField = document.getElementById('tags' + projectId);
-
-            $('#tags' + projectId).tagsInput();
-
-            var tagsContainer = document.getElementById('tags' + projectId +'_tagsinput');
-
-            var observer = new MutationObserver(mutationCallback);
-
-            observer.observe(tagsContainer, {
-                childList: true,
-              });
+            if(tagsInputField)
+                {
+                    $('#tags' + projectId).tagsInput();
+                    
+                                var tagsContainer = document.getElementById('tags' + projectId +'_tagsinput');
+                    
+                                var observer = new MutationObserver(mutationCallback);
+                    
+                                observer.observe(tagsContainer, {
+                                    childList: true,
+                                  });
+                }
+            
         }
    
 
@@ -112,11 +116,14 @@
 
         function listenForSortingEvents()
         {
-            document.getElementById('projects-sort').addEventListener('change', function(e){
+            var projectsSort = document.getElementById('projects-sort');
+            if(projectsSort){
+            projectsSort.addEventListener('change', function(e){
                 
                                 sortProjectsByTag(e.target.value);
                             
                        });
+                    }
         }
 
         // function calculateLayout()
@@ -134,10 +141,13 @@
         // }
 
         function layoutProjects(){
-            document.querySelectorAll('#layoutBreak .project').forEach(function(el){
-                el.className = 'project col-md-4 mb-3';
-            });
-            document.querySelectorAll('#center .project').forEach(function(el){
-                el.className = 'project col-md-6 mb-3';
-            });
+            if(document.getElementsByClassName('project').length > 2)
+            {
+                    document.querySelectorAll('#layoutBreak .project').forEach(function(el){
+                        el.className = 'project col-md-4 mb-3';
+                    });
+                    document.querySelectorAll('#center .project').forEach(function(el){
+                        el.className = 'project col-md-6 mb-3';
+                    });
+            }
         }

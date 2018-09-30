@@ -219,7 +219,8 @@ text-decoration: none; }
     body{
         margin-right:0;
     }
-    .component{
+    .modal-content{
+        
         padding:0;
 
     }

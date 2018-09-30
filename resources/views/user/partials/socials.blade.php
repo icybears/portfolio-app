@@ -1,4 +1,4 @@
-<div class="mt-3" id="socials">
+<div class="my-3" id="socials">
     @if($user->isAuthenticated())
         @include('modals.edit-socials')
     @endif

@@ -19,7 +19,7 @@ editProjectModal{{$project->getId()}}
     <div class="form-group">
 
         <label  for="image">Project Image</label>
-        <input type="file" name="image" accept=".png, .jpg, .jpeg" class="form-control-file {{ (session('modal') == strval($project->getId()) && $errors->has('image')) ? ' is-invalid' : '' }}" id="image"
+        <input type="file" name="image" accept=".png, .jpg, .jpeg" class="form-control-file {{ (session('modal') == strval($project->getId()) && $errors->has('image')) ? ' is-invalid' : '' }}" 
         onchange="document.getElementById('projectPreviewEdit').src = window.URL.createObjectURL(this.files[0])"
         >
         
@@ -33,7 +33,7 @@ editProjectModal{{$project->getId()}}
 
     <div class="form-group">
         <label for="title">Project title</label>
-        <input type="text" class="form-control {{ (session('modal') == strval($project->getId()) && $errors->has('title')) ? ' is-invalid' : '' }}" id="title" name="title" placeholder="The title of your project" value="{{ old('title') ?? $project->getTitle() }} ">
+        <input type="text" class="form-control {{ (session('modal') == strval($project->getId()) && $errors->has('title')) ? ' is-invalid' : '' }}"  name="title" placeholder="The title of your project" value="{{ old('title') ?? $project->getTitle() }} ">
         @if (session('modal') == strval($project->getId()) && $errors->has('title'))
         <span class="invalid-feedback">
             <strong>{{ $errors->first('title') }}</strong>
@@ -46,7 +46,7 @@ editProjectModal{{$project->getId()}}
 
     <div class="form-group">
             <label for="description">Description</label>
-           <textarea name="description" class="form-control {{ (session('modal') == strval($project->getId()) && $errors->has('description')) ? ' is-invalid' : '' }}" id="description" placeholder="A short description" rows="4">{{ old('description') ?? $project->getDescription() }}</textarea>
+           <textarea name="description" class="form-control {{ (session('modal') == strval($project->getId()) && $errors->has('description')) ? ' is-invalid' : '' }}"  placeholder="A short description" rows="4">{{ old('description') ?? $project->getDescription() }}</textarea>
            @if (session('modal') == strval($project->getId()) && $errors->has('description'))
            <span class="invalid-feedback">
                <strong>{{ $errors->first('description') }}</strong>
@@ -57,7 +57,7 @@ editProjectModal{{$project->getId()}}
 
     <div class="form-group">
         <label for="link">Link (optional)</label>
-        <input type="text" class="form-control {{ (session('modal') == strval($project->getId()) && $errors->has('link')) ? ' is-invalid' : '' }}"  id="link" name="link" placeholder="A link to your project" value="{{  old('link') ?? $project->getLink() }}">
+        <input type="text" class="form-control {{ (session('modal') == strval($project->getId()) && $errors->has('link')) ? ' is-invalid' : '' }}"  name="link" placeholder="A link to your project" value="{{  old('link') ?? $project->getLink() }}">
         @if (session('modal') == strval($project->getId()) && $errors->has('link'))
         <span class="invalid-feedback">
             <strong>{{ $errors->first('link') }}</strong>

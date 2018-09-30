@@ -18,7 +18,7 @@ addProjectModal
     <div class="form-group">
 
         <label  for="image">Project Image</label>
-        <input type="file" name="image" accept=".png, .jpg, .jpeg" class="form-control-file {{ (session('source') == 'add' && $errors->has('image')) ? ' is-invalid' : '' }}" id="image"
+        <input type="file" name="image" accept=".png, .jpg, .jpeg" class="form-control-file {{ (session('source') == 'add' && $errors->has('image')) ? ' is-invalid' : '' }}" id="projectImage"
         onchange="document.getElementById('projectPreviewAdd').src = window.URL.createObjectURL(this.files[0])"
         >
         
@@ -32,7 +32,7 @@ addProjectModal
 
     <div class="form-group">
         <label for="title">Project title</label>
-        <input type="text" class="form-control {{ (session('source') == 'add' && $errors->has('title')) ? ' is-invalid' : '' }}" id="title" name="title" placeholder="The title of your project" value="{{ old('title') }}">
+        <input type="text" class="form-control {{ (session('source') == 'add' && $errors->has('title')) ? ' is-invalid' : '' }}"  name="title" placeholder="The title of your project" value="{{ old('title') }}">
         @if (session('source') == 'add' && $errors->has('title'))
         <span class="invalid-feedback">
             <strong>{{ $errors->first('title') }}</strong>
@@ -45,7 +45,7 @@ addProjectModal
 
     <div class="form-group">
             <label for="description">Description</label>
-           <textarea name="description" class="form-control {{ (session('source') == 'add' && $errors->has('description')) ? ' is-invalid' : '' }}" id="description" placeholder="A short description" rows="4">{{ old('description') }}</textarea>
+           <textarea name="description" class="form-control {{ (session('source') == 'add' && $errors->has('description')) ? ' is-invalid' : '' }}" placeholder="A short description" rows="4">{{ old('description') }}</textarea>
            @if (session('source') == 'add' && $errors->has('description'))
            <span class="invalid-feedback">
                <strong>{{ $errors->first('description') }}</strong>
@@ -56,7 +56,7 @@ addProjectModal
 
     <div class="form-group">
         <label for="link">Link (optional)</label>
-        <input type="text" class="form-control {{ (session('source') == 'add' && $errors->has('link')) ? ' is-invalid' : '' }}"  id="link" name="link" placeholder="A link to your project" value="{{  old('link') }}">
+        <input type="text" class="form-control {{ (session('source') == 'add' && $errors->has('link')) ? ' is-invalid' : '' }}"   name="link" placeholder="A link to your project" value="{{  old('link') }}">
         @if (session('source') == 'add' && $errors->has('link'))
         <span class="invalid-feedback">
             <strong>{{ $errors->first('link') }}</strong>
@@ -66,7 +66,7 @@ addProjectModal
 
     <div class="form-group">
             <label for="tags">Tag(s)</label>
-            <input type="text" class="form-control {{ (session('source') == 'add' && $errors->has('tags')) ? ' is-invalid' : '' }}" id="tags" name="tags" placeholder="Comma separated tags e.g: creative, mobile, ..." value="{{ old('tags') }}">
+            <input type="text" class="form-control {{ (session('source') == 'add' && $errors->has('tags')) ? ' is-invalid' : '' }}"  name="tags" placeholder="Comma separated tags e.g: creative, mobile, ..." value="{{ old('tags') }}">
             
             @if (session('source') == 'add' && $errors->has('tags'))
             <span class="invalid-feedback">
