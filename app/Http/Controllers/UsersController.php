@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Validator;
 use Illuminate\Support\Facades\Log;
+use \Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -48,8 +49,68 @@ class UsersController extends Controller
             $user->setImage(request('image'));
         }
 
-        return redirect('/');
+        return redirect('/')->with(['message' => 'Information updated.', 'class' => 'info']);
     }
 
+   public function changePassword($username, Request $request){
+
+    $validator = Validator::make($request->all(),  [
+        'newPassword' => 'required|min:8|max:60|confirmed',
+    ]);
+    
+            if ($validator->fails()) {
+                return back()
+                            ->withErrors($validator)
+                            ->with('source', 'changePassword');
+            }
    
+
+    if(Hash::check(request('currentPassword'), auth()->user()->password ))
+    {
+        User::where('id', auth()->id())
+            ->update(['password' => bcrypt(request('newPassword'))]);
+        
+            return back()->with(
+                ['message' =>'Password changed successfully',
+                'class' => 'success'
+                ]);
+    
+    } else {
+        return back()->with(
+            ['message' =>'Invalid current password',
+            'class' => 'warning'
+            ]);
+    }
+   }
+
+   public function changeUsername($username, Request $request)
+   {
+    $validator = Validator::make($request->all(),  [
+        'newUsername' => 'required|min:2|max:30|unique:users,name'
+    ]);
+    
+            if ($validator->fails()) {
+                return back()
+                            ->withErrors($validator)
+                            ->with('source', 'changeUsername');
+            }
+   
+
+    if(Hash::check(request('currentPassword'), auth()->user()->password ))
+    {
+        User::where('id', auth()->id())
+            ->update(['name' => request('newUsername')]);
+        
+            return back()->with(
+                ['message' =>'Username changed successfully',
+                'class' => 'success'
+                ]);
+    
+    } else {
+        return back()->with(
+            ['message' =>'Invalid current password',
+            'class' => 'warning'
+            ]);
+    }
+   }
 }

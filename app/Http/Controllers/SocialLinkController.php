@@ -31,7 +31,7 @@ class SocialLinkController extends Controller
         
        auth()->user()->socialLinks()->save( $socialLink );
 
-       return back();
+       return back()->with(['message' => 'Social link added.', 'class' => 'success']);
     }
 
     public function destroy($username, $linkId)
@@ -39,6 +39,6 @@ class SocialLinkController extends Controller
        
         auth()->user()->socialLinks()->where('id', $linkId)->delete();
 
-        return back();
+        return back()->with(['message' => 'Social link removed.', 'class' => 'success']);
     }
 }

@@ -81,5 +81,6 @@
                 @if( count($user->projects) > 0 )
                     @include('modals.confirm-delete-project')
                 @endif
+                @include('modals.user-settings')
             @endif
 @endsection

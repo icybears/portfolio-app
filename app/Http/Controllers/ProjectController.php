@@ -44,7 +44,7 @@ class ProjectController extends Controller
 
         auth()->user()->projects()->save($project);
 
-         return back();
+         return back()->with(['message' => 'Project added.', 'class' => 'success']);
 
     }
 
@@ -74,7 +74,7 @@ class ProjectController extends Controller
            Project::find($projectId)->setImage(request('image'));
         }
 
-        return back();
+        return back()->with(['message' => 'Project updated.', 'class' => 'info']);
     }
 
     public function destroy($username, $projectId)
@@ -86,6 +86,6 @@ class ProjectController extends Controller
         }
         auth()->user()->projects()->where('id', $projectId)->delete();
 
-        return back();
+        return back()->with(['message' => 'Project removed.', 'class' => 'success']);
     }
 }

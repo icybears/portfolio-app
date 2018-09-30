@@ -16,6 +16,9 @@
             <li class="nav-item">
                     <a class="nav-link " href="" data-toggle="modal" data-target="#addProjectModal">Add Project&nbsp;<i class="fas fa-folder"></i></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="" data-toggle="modal" data-target="#userSettingsModal">User Settings&nbsp;<i class="fas fa-cog"></i></a>
+            </li>
 
             @endif
            

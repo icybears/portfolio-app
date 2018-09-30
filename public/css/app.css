@@ -193,8 +193,27 @@ text-decoration: none; }
 /* --- CUSTOM BTN --- */
 .btn{
     border-radius:0px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12) !important;
+}
+
+.btn-primary{
+    background-color:rgba(58, 161, 255, 0.76);
+    border-color:rgba(58, 161, 255, 0.76);
+    /* color: #F5F5F5; */
+    color:white;
 }
 /* -------------- */
+
+/* ----- CUSTOM ALERT */
+.custom-alert{
+    position: absolute;
+    z-index: 2;
+    right: 10px;
+    top: 15%;
+    border-radius: 0px;
+    transition: all 0.5s ease;
+}
+/* ----------------- */
 
 @media only screen and (max-width: 500px) {
     body{

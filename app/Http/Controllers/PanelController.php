@@ -32,7 +32,7 @@ class PanelController extends Controller
                         'content' => request('content')
                         ]);
 
-        return back();
+        return back()->with(['message' => 'Panel created.', 'class' => 'success']);
     }
 
     public function update($username, $panelId, Request $request)
@@ -57,6 +57,6 @@ class PanelController extends Controller
     {
         auth()->user()->panels()->where('id', $panelId)->delete();
         
-        return back();
+        return back()->with(['message' => 'Panel deleted. ', 'class' => 'success']);
     }
 }

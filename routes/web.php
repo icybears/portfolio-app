@@ -17,6 +17,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home','HomeController@index');
+
 Route::get('{username}', 'UsersController@show');
 
 Route::post('{username}/about/edit', 'UsersController@editAbout');
@@ -31,3 +32,7 @@ Route::delete('{username}/panels/{id}', 'PanelController@destroy');
 Route::post('{username}/projects','ProjectController@store');
 Route::patch('{username}/projects/{id}', 'ProjectController@update');
 Route::delete('{username}/projects/{id}', 'ProjectController@destroy');
+
+Route::patch('{username}/settings/password','UsersController@changePassword');
+Route::patch('{username}/settings/username','UsersController@changeUsername');
+
