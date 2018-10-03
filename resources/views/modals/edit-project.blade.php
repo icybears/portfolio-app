@@ -13,14 +13,14 @@ editProjectModal{{$project->getId()}}
     @csrf
     {{ method_field('patch') }}
    
-    <div class="imgPreviewWrapper">
-        <img id="projectPreviewEdit" class="d-block mx-auto " src="{{ $project->getImageUrl() }}" alt="{{ $project->getTitle() .' Image' }}">
+    <div class="projectPreviewWrapper">
+        <img id="projectPreviewEdit{{$project->getId()}}" class="d-block mx-auto " src="{{ $project->getImageUrl() }}" alt="{{ $project->getTitle() .' Image' }}">
     </div>
     <div class="form-group">
 
         <label  for="image">Project Image</label>
         <input type="file" name="image" accept=".png, .jpg, .jpeg" class="form-control-file {{ (session('modal') == strval($project->getId()) && $errors->has('image')) ? ' is-invalid' : '' }}" 
-        onchange="document.getElementById('projectPreviewEdit').src = window.URL.createObjectURL(this.files[0])"
+        onchange="document.getElementById('projectPreviewEdit{{ $project->getId() }}').src = window.URL.createObjectURL(this.files[0])"
         >
         
         @if (session('modal') == strval($project->getId()) && $errors->has('image'))

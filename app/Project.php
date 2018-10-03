@@ -35,9 +35,9 @@ class Project extends Model
     {
         return $this->link;
     }
-    public function getImage()
+    public function getImageName()
     {
-        return $this->image;
+        return $this->imageName;
     }
     public function getTags()
     {
@@ -45,19 +45,35 @@ class Project extends Model
     }
     public function getImageUrl()
     {
-        return Storage::url('project_image/' . $this->image);
+        if($this->imageUrl){
+            return $this->imageUrl;
+        } else {
+            return Storage::url('project_image/default.png');
+        }
     }
     public function setImage($image)
     {
-        $imageName =  Image::upload($image, "project_image");
+
+        $result = Image::uploadToCloudder($image);
         
-        if($this->image != 'default.png'){
-            Image::delete($this->image, "project_image");
+        if($this->imageName){
+            Image::deleteFromCloudder($this->imageName);
         }
 
-        $this->image = $imageName;
-        $this->user_id = auth()->id();
+        $this->imageName = $result['image_name'];
+        $this->imageUrl = $result['image_url'];   
+        $this->user_id = auth()->id();         
         $this->save();
+
+        // $imageName =  Image::upload($image, "project_image");
+        
+        // if($this->image != 'default.png'){
+        //     Image::delete($this->image, "project_image");
+        // }
+
+        // $this->image = $imageName;
+        // $this->user_id = auth()->id();
+        // $this->save();
         
     }
 

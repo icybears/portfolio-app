@@ -39,7 +39,9 @@ class ProjectController extends Controller
 
         if(request('image'))
         {
-            $project->setImage(request('image'));
+           
+                $project->setImage(request('image'));
+            
         }
 
         auth()->user()->projects()->save($project);
@@ -79,10 +81,10 @@ class ProjectController extends Controller
 
     public function destroy($username, $projectId)
     {
-        $imageName = Project::findOrFail($projectId)->getImage();
+        $imageName = Project::findOrFail($projectId)->getImageName();
 
-        if($imageName !== 'default.png'){
-            Image::delete($imageName,'project_image');
+        if($imageName){
+            Image::deleteFromCloudder($imageName);
         }
         auth()->user()->projects()->where('id', $projectId)->delete();
 

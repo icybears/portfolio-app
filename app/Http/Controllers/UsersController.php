@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+Use App\Image;
 use Validator;
 use Illuminate\Support\Facades\Log;
 use \Illuminate\Support\Facades\Hash;
@@ -46,7 +47,8 @@ class UsersController extends Controller
 
         if(request('image'))
         {
-            $user->setImage(request('image'));
+            // $user->setImage(request('image'));
+            auth()->user()->setImage(request('image'));
         }
 
         return redirect('/')->with(['message' => 'Information updated.', 'class' => 'info']);

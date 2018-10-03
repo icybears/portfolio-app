@@ -20,10 +20,12 @@ class CreateUsersTable extends Migration
             $table->string('fullName')->nullable();            
             $table->string('occupation')->nullable();            
             $table->string('description')->nullable();
-            $table->string('image')->default('default.png');            
+            $table->string('imageName')->nullable();
+            $table->string('imageUrl')->nullable();
             $table->string('password');
             $table->boolean('premium')->default(false);
             $table->boolean('isAdmin')->default(false);
+            $table->float('totalStorage')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

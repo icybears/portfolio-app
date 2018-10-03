@@ -20,6 +20,7 @@
       <th>Created At</th>
       <th>Updated At</th>
       <th>IsAdmin</th>
+      <th>Storage</th>
       <th></th>
       <th></th>
     </tr>
@@ -35,7 +36,8 @@
             <td>{{ $user->isPremium() ? 'true':'false' }}</td>
             <td>{{ $user->created_at }}</td>
             <td>{{ $user->updated_at }}</td>     
-            <td>{{ $user->hasAdminRole() ? 'true':'false' }}</td>    
+            <td>{{ $user->hasAdminRole() ? 'true':'false' }}</td> 
+            <td>{{ $user->getTotalStorage() }}</td>                
             <td><a href="{{url('admin/users/' .$user->getId().'/edit')}}"><i class="fas fa-user-edit"></i></a></td>
            
             <td>

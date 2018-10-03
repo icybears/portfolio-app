@@ -67,9 +67,12 @@ h1{
     width:100%;
 }
 .projectPreviewWrapper{
+    width:80%;
+    margin: auto;
+}
+.projectPreviewWrapper  img{
     width:100%;
 }
-
 .project .dropdown {
     position: absolute;
     right: 2px;

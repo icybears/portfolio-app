@@ -4,6 +4,7 @@ namespace App;
 
 
 use Illuminate\Support\Facades\Storage;
+use JD\Cloudder\Facades\Cloudder;
 
 class Image
 {
@@ -14,6 +15,38 @@ class Image
      * @param [string] $folder
      * @return string Name of the uploaded image
      */
+    static public function uploadToCloudder($image)
+    {
+        // $image = $request->file('image');
+        
+               $name = $image->getClientOriginalName();
+
+               $image_name = $image->getRealPath();
+                try{
+                Cloudder::upload($image_name,null, array("timeout" => 60));
+               
+                } catch(\Exception $e)
+                {
+                    return 'Error while uploading the image';
+                }
+        
+               list($width, $height) = getimagesize($image_name);
+
+               $image_name = Cloudder::getPublicId();
+               $image_url= Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
+             
+            return ['image_name'=> $image_name,'image_url' => $image_url];
+           
+    }
+
+    static public function deleteFromCloudder($imageName){
+        try{
+            Cloudder::delete($imageName);            
+        } catch(\Exception $e)
+        {
+            return 'Error while deleting previous image';
+        }
+    }
     static public function upload($image, $folder)
     {
         $uploadedImage = $image;

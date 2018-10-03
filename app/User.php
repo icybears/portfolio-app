@@ -12,6 +12,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+
+    private $max_storage = 10000000;
     /**
      * The attributes that are mass assignable.
      *
@@ -38,7 +40,7 @@ class User extends Authenticatable
         'fullName' => 'min:2|max:60',
         'occupation' => 'max:120',
         'description' => 'max:300',
-        'image' => 'mimes:jpeg,jpg,png|dimensions:min_width=100,min_height=100,max_width:500,max_height:500'
+        'image' => 'mimes:jpeg,jpg,png|dimensions:min_width=100,min_height=100,max_width:500,max_height:500|between:1,2000'
     ];
 
     public function projects()
@@ -78,20 +80,26 @@ class User extends Authenticatable
     }
     public function getImageUrl()
     {
-        return Storage::url('user_image/' . $this->image);
+        if($this->imageUrl){
+            return $this->imageUrl;
+        } else {
+            return Storage::url('user_image/default.png');
+        }
     }
     public function setImage($image)
     {
             
-            $imageName = Image::upload($image, "user_image");
+            // $imageName = Image::upload($image, "user_image");
+            $result = Image::uploadToCloudder($image);
 
-            if($this->image != 'default.png'){
-                Image::delete($this->image, 'user_image');
+            if($this->imageName){
+                Image::deleteFromCloudder($this->imageName);
             }
 
-            $this->image = $imageName;
+            $this->imageName = $result['image_name'];
+            $this->imageUrl = $result['image_url'];            
             $this->save();
-       
+
     }
     public function isAuthenticated() {
 
@@ -133,6 +141,27 @@ class User extends Authenticatable
         }
         
         return $result;
+    }
+
+    public function getTotalStorage()
+    {
+        return $this->totalStorage;
+    }
+
+    public function updateTotalStorage($val)
+    {
+        $this->totalStorage += $val;
+        $this->save();
+    }
+
+    public function getMaxStorage()
+    {
+        return $this->max_storage;
+    }
+
+    public function checkAvailableStorage($val)
+    {
+        return ($this->getTotalStorage() + $val < $this->getMaxStorage());
     }
 
  
