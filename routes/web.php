@@ -18,6 +18,15 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home','HomeController@index');
 
+Route::get('/admin', 'AdminController@index');
+Route::get('/admin/users', 'AdminController@users');
+Route::get('/admin/users/create', 'AdminController@create');
+Route::get('/admin/users/{user}/edit','AdminController@editUser');
+Route::post('/admin/users/','AdminController@store');
+Route::patch('/admin/users/{user}','AdminController@updateUser');
+Route::delete('/admin/users/{user}', 'AdminController@deleteUser');
+
+
 Route::get('{username}', 'UsersController@show');
 
 Route::post('{username}/about/edit', 'UsersController@editAbout');
@@ -35,4 +44,6 @@ Route::delete('{username}/projects/{id}', 'ProjectController@destroy');
 
 Route::patch('{username}/settings/password','UsersController@changePassword');
 Route::patch('{username}/settings/username','UsersController@changeUsername');
+
+
 

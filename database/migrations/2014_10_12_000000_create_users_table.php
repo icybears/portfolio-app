@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('image')->default('default.png');            
             $table->string('password');
             $table->boolean('premium')->default(false);
+            $table->boolean('isAdmin')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

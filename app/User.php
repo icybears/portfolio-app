@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name', 'email', 'password','fullName', 'occupation', 'description'
     ];
 
+    protected $guarded = [
+        'isAdmin', 'premium', 'id'
+    ];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -48,6 +52,9 @@ class User extends Authenticatable
     public function panels()
     {
         return $this->hasMany(Panel::class);
+    }
+    public function getId(){
+        return $this->id;
     }
     public function getUsername()
     {
@@ -89,9 +96,18 @@ class User extends Authenticatable
     public function isAuthenticated() {
 
         return $this->id == auth()->id();
-
+        // return false;
     }
 
+    public function hasAdminRole() 
+    {
+        return $this->isAdmin;
+    }
+
+    public function isPremium()
+    {
+        return $this->premium;
+    }
    
     static public function findByUsernameOrFail($username) {
 
@@ -119,6 +135,7 @@ class User extends Authenticatable
         return $result;
     }
 
+ 
     // public function getAllProjectsTags(User $user)
     // {
     //     $tags = DB::table('projects')->where('user_id', $user->getId())->pluck('tags');
