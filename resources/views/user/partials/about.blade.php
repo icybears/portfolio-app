@@ -3,7 +3,7 @@
     
         @if($user->isAuthenticated())
         @include('modals.edit-about')
-        <button id="editAboutBtn" type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#editAboutModal">Edit</button>
+        <button id="editAboutBtn" type="button" class="btn btn-light" data-toggle="modal" data-target="#editAboutModal"><i class="fas fa-user-edit"></i></button>
         @endif
     <div id="profileImg">
         <img src="{{ $user->getImageUrl()}}" alt="{{ $user->getUsername() . ' Image' }}" class="d-block mx-auto rounded-circle">
@@ -15,9 +15,9 @@
             </div>
             @endif
             @if( !is_null( $user->getFullName() ) )
-                <h3>
+                <h1>
                     {{ $user->getFullName() }}
-                </h3>
+                </h1>
             @else
                 @if($user->isAuthenticated())
                 <div class="my-2">  
@@ -27,9 +27,9 @@
             @endif
 
             @if( !is_null( $user->getOccupation() ) )
-            <h6>
+            <h4>
                 {{ $user->getOccupation() }}
-            </h6>
+            </h4>
         @else
         @if($user->isAuthenticated())
             <div class="my-2">

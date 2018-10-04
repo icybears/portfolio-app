@@ -1,5 +1,5 @@
 <div class="dropdown">
-    <a class="btn btn-outline-secondary dropdown-toggle btn-sm float-right" href="#" role="button" id="dropdownMenuLink{{$panel->id}}" data-toggle="dropdown" aria-haspopup="true"
+    <a class="btn btn-light dropdown-toggle btn-sm float-right" href="#" role="button" id="dropdownMenuLink{{$panel->id}}" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">
         <i class="fas fa-cog"></i>
         </a>

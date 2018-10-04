@@ -40,7 +40,7 @@ class User extends Authenticatable
         'fullName' => 'min:2|max:60',
         'occupation' => 'max:120',
         'description' => 'max:300',
-        'image' => 'mimes:jpeg,jpg,png|dimensions:min_width=100,min_height=100,max_width:500,max_height:500|between:1,2000'
+        'image' => 'mimes:jpeg,jpg,png|dimensions:min_width=100,min_height=100|between:1,2000'
     ];
 
     public function projects()
@@ -103,8 +103,12 @@ class User extends Authenticatable
     }
     public function isAuthenticated() {
 
+        if(session('preview') == 'on')
+        {
+            return false;
+        }
+
         return $this->id == auth()->id();
-        // return false;
     }
 
     public function hasAdminRole() 

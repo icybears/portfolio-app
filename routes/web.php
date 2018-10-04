@@ -17,14 +17,23 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home','HomeController@index');
+Route::get('{username}/preview', function($username, Illuminate\Http\Request $request){
+    $user = App\User::findByUsernameOrFail($username);
+    $request->session()->flash('preview', 'on');
+    return view('user.page', compact('user'));
+});
 
-Route::get('/admin', 'AdminController@index');
-Route::get('/admin/users', 'AdminController@users');
-Route::get('/admin/users/create', 'AdminController@create');
-Route::get('/admin/users/{user}/edit','AdminController@editUser');
-Route::post('/admin/users/','AdminController@store');
-Route::patch('/admin/users/{user}','AdminController@updateUser');
-Route::delete('/admin/users/{user}', 'AdminController@deleteUser');
+Route::middleware(['CheckIfAdmin'])->group(function () {
+
+    Route::get('/admin', 'AdminController@index');
+    Route::get('/admin/users', 'AdminController@users');
+    Route::get('/admin/users/create', 'AdminController@create');
+    Route::get('/admin/users/{user}/edit','AdminController@editUser');
+    Route::post('/admin/users/','AdminController@store');
+    Route::patch('/admin/users/{user}','AdminController@updateUser');
+    Route::delete('/admin/users/{user}', 'AdminController@deleteUser');
+});
+
 
 
 Route::get('{username}', 'UsersController@show');

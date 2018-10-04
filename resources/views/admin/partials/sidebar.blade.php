@@ -2,14 +2,14 @@
     <div class="sidebar-sticky">
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link {{ request()->is('admin') ? 'active' : '' }}" href="#">
-            <span data-feather="home"></span>
+          <a class="nav-link {{ request()->is('admin') ? 'active' : '' }}" href="{{ url('/admin') }}">
+            <i class="fas fa-home"></i>
             Dashboard
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link {{ (request()->is('admin/users/*') || request()->is('admin/users')) ? 'active' : '' }}" href="{{ url('admin/users') }}">
-            <span data-feather="bar-chart-2"></span>
+            <i class="fas fa-user"></i>
             Users
           </a>
         </li>

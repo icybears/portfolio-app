@@ -22,6 +22,7 @@ editProjectModal{{$project->getId()}}
         <input type="file" name="image" accept=".png, .jpg, .jpeg" class="form-control-file {{ (session('modal') == strval($project->getId()) && $errors->has('image')) ? ' is-invalid' : '' }}" 
         onchange="document.getElementById('projectPreviewEdit{{ $project->getId() }}').src = window.URL.createObjectURL(this.files[0])"
         >
+        <small class="form-text text-muted">max. 2MB</small>
         
         @if (session('modal') == strval($project->getId()) && $errors->has('image'))
         <span class="invalid-feedback">

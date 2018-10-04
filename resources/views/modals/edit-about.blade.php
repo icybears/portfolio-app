@@ -12,6 +12,8 @@ editAboutModal
 <form id="editAboutForm" method="post" enctype="multipart/form-data" action="{{ auth()->user()->getUsername() . '/about/edit' }}">
     @csrf
 
+    @include('partials.progress')
+
     <div id="imgPreviewWrapper">
         <img id="imgPreview" class="d-block mx-auto rounded-circle" src="{{ $user->getImageUrl() }}" alt="{{ $user->getUsername() . ' profile picture' }}">
     </div>

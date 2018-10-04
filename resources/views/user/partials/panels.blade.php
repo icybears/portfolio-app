@@ -1,6 +1,6 @@
 @if(! empty($user->panels))
 @foreach($user->panels as $panel)
-    <div class="component my-4 bg-white shadow-sm">
+    <div class="component my-4 bg-white shadow-sm panel">
             @if($user->isAuthenticated())
                 @include('user.partials.panel-dd')
                 @include('modals.confirm-delete-panel')

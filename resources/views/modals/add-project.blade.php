@@ -21,6 +21,7 @@ addProjectModal
         <input type="file" name="image" accept=".png, .jpg, .jpeg" class="form-control-file {{ (session('source') == 'add' && $errors->has('image')) ? ' is-invalid' : '' }}" id="projectImage"
         onchange="document.getElementById('projectPreviewAdd').src = window.URL.createObjectURL(this.files[0])"
         >
+        <small class="form-text text-muted">max. 2MB</small>
         
         @if (session('source') == 'add' && $errors->has('image'))
         <span class="invalid-feedback">

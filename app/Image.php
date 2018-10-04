@@ -22,18 +22,27 @@ class Image
                $name = $image->getClientOriginalName();
 
                $image_name = $image->getRealPath();
+
                 try{
                 Cloudder::upload($image_name,null, array("timeout" => 60));
                
                 } catch(\Exception $e)
                 {
-                    return 'Error while uploading the image';
+                    report($e);
+                    abort(500);
                 }
         
                list($width, $height) = getimagesize($image_name);
 
-               $image_name = Cloudder::getPublicId();
-               $image_url= Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
+                try{
+                    $image_name = Cloudder::getPublicId();
+                    $image_url= Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
+                }
+                catch(\Exception $e)
+                {
+                    report($e);
+                    abort(500);
+                }
              
             return ['image_name'=> $image_name,'image_url' => $image_url];
            
@@ -44,7 +53,8 @@ class Image
             Cloudder::delete($imageName);            
         } catch(\Exception $e)
         {
-            return 'Error while deleting previous image';
+            report('Error while deleting previous image');
+            abort(500);
         }
     }
     static public function upload($image, $folder)
@@ -57,7 +67,8 @@ class Image
             Storage::disk('public')
                 ->put($folder . "/" . $imageName, file_get_contents($uploadedImage));
         } catch(\Exception $e) {
-            echo 'Problems storing the image';
+            report('Problems storing the image');
+            abort(500);
             
         }
 
@@ -75,7 +86,8 @@ class Image
         try{
             Storage::disk('public')->delete($folder ."/" . $imageName);
         } catch(\Exception $e) {
-            echo 'Problems deleting the image';
+            report('Problems deleting the image');
+            abort(500);
         }
         
     }
