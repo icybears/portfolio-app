@@ -34,7 +34,7 @@ editAboutModal
 
     <div class="form-group">
         <label for="fullName">Full Name</label>
-        <input type="text" class="form-control {{ session('source') == 'editAbout' && $errors->has('fullName') ? ' is-invalid' : '' }}" id="fullName" name="fullName" placeholder="Who you are" value="{{ $user->fullName or old('fullName') }}">
+        <input type="text" class="form-control {{ session('source') == 'editAbout' && $errors->has('fullName') ? ' is-invalid' : '' }}" id="fullName" name="fullName" placeholder="Who you are" value="{{ old('fullName') ?? $user->fullName }}">
         @if (session('source') == 'editAbout' && $errors->has('fullName'))
         <span class="invalid-feedback">
             <strong>{{ $errors->first('fullName') }}</strong>
@@ -45,7 +45,7 @@ editAboutModal
 
     <div class="form-group">
             <label for="occupation">Occupation</label>
-            <input type="text" class="form-control {{ session('source') == 'editAbout' && $errors->has('occupation') ? ' is-invalid' : '' }}"  id="occupation" name="occupation" placeholder="Your occupation/title" value="{{ $user->occupation or old('occupation') }}">
+            <input type="text" class="form-control {{ session('source') == 'editAbout' && $errors->has('occupation') ? ' is-invalid' : '' }}"  id="occupation" name="occupation" placeholder="Your occupation/title" value="{{ old('occupation') ?? $user->occupation }}">
             @if (session('source') == 'editAbout' && $errors->has('occupation'))
             <span class="invalid-feedback">
                 <strong>{{ $errors->first('occupation') }}</strong>
@@ -55,7 +55,7 @@ editAboutModal
 
     <div class="form-group">
             <label for="description">Description</label>
-           <textarea name="description" class="form-control {{ session('source') == 'editAbout' && $errors->has('description') ? ' is-invalid' : '' }}"  placeholder="A short resume" rows="4">{{ $user->description or old('description') }}</textarea>
+           <textarea name="description" class="form-control {{ session('source') == 'editAbout' && $errors->has('description') ? ' is-invalid' : '' }}"  placeholder="A short resume" rows="4">{{ old('description') ?? $user->description }}</textarea>
            @if (session('source') == 'editAbout' && $errors->has('description'))
            <span class="invalid-feedback">
                <strong>{{ $errors->first('description') }}</strong>

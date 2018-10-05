@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->boolean('premium')->default(false);
             $table->boolean('isAdmin')->default(false);
             $table->float('totalStorage')->default(0);
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

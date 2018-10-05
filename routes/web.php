@@ -13,7 +13,7 @@
 
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home','HomeController@index');
@@ -38,21 +38,35 @@ Route::middleware(['CheckIfAdmin'])->group(function () {
 
 Route::get('{username}', 'UsersController@show');
 
-Route::post('{username}/about/edit', 'UsersController@editAbout');
 
-Route::post('{username}/socials', 'SocialLinkController@store');
-Route::delete('{username}/socials/{id}', 'SocialLinkController@destroy');
+Route::middleware('throttle:10,1')->group(function () {
+    Route::post('{username}/about/edit', 'UsersController@editAbout');
+});
 
-Route::post('{username}/panels', 'PanelController@store');
-Route::patch('{username}/panels/{id}','PanelController@update');
-Route::delete('{username}/panels/{id}', 'PanelController@destroy');
+Route::middleware('throttle:20,1')->group(function () {
+    Route::post('{username}/socials', 'SocialLinkController@store');
+    Route::delete('{username}/socials/{id}', 'SocialLinkController@destroy');
+});
 
-Route::post('{username}/projects','ProjectController@store');
-Route::patch('{username}/projects/{id}', 'ProjectController@update');
-Route::delete('{username}/projects/{id}', 'ProjectController@destroy');
+Route::middleware('throttle:20,1')->group(function () {
+    Route::post('{username}/panels', 'PanelController@store');
+    Route::patch('{username}/panels/{id}','PanelController@update');
+    Route::delete('{username}/panels/{id}', 'PanelController@destroy');
+});
 
-Route::patch('{username}/settings/password','UsersController@changePassword');
-Route::patch('{username}/settings/username','UsersController@changeUsername');
+
+Route::middleware('throttle:20,1')->group(function () {
+    Route::post('{username}/projects','ProjectController@store');
+    Route::patch('{username}/projects/{id}', 'ProjectController@update');
+    Route::delete('{username}/projects/{id}', 'ProjectController@destroy');
+});
+
+
+Route::middleware('throttle:6,1')->group(function () {
+    Route::patch('{username}/settings/password','UsersController@changePassword');
+    Route::patch('{username}/settings/username','UsersController@changeUsername');
+});
+
 
 
 

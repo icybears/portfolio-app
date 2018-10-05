@@ -4,6 +4,9 @@
 
     $(document).ready(function(){
         
+        // $(".lds-default").fadeOut(function() {
+        //     $(this).remove(); // Optional if it's going to only be used once.
+        // });
 
         listenForSortingEvents();
 

@@ -31,13 +31,15 @@
                      <div class="component my-3 bg-white shadow-sm col-md-12">
                             
                                     <h1> Projects </h1>
-                                    Sort by Tags&nbsp;
-                                    <select id="projects-sort" class="custom-select w-25">
-                                        <option selected disabled hidden>Choose a tag</option>
-                                        @foreach(App\User::getAllProjectsTags($user) as $tag)
-                                            <option value="{{$tag}}">{{ $tag }}</option>
-                                        @endforeach
-                                    </select>
+                                <div class="">
+                                        <div class="row col-md-3">Sort by Tags&nbsp;</div>
+                                        <select id="projects-sort" class="custom-select row col-md-4">
+                                            <option selected disabled hidden>Choose a tag</option>
+                                            @foreach(App\User::getAllProjectsTags($user) as $tag)
+                                                <option value="{{$tag}}">{{ $tag }}</option>
+                                            @endforeach
+                                        </select>
+                                </div>
                         </div>
                     @endif
                     </div>
