@@ -22,12 +22,18 @@
             <li>
                     <a class="nav-link " href="" data-toggle="modal" data-target="#addProjectModal"><i class="fas fa-folder"></i>&nbsp;Add Project</a>
             </li>
-            <li>
-                    <a href="{{url($user->getUsername() . '/preview')}}" class="nav-link" href="" target="_blank"><i class="far fa-eye"></i>&nbsp;Preview Page</a>
-                </li>
-            <li>
-                <a class="nav-link" href="" data-toggle="modal" data-target="#userSettingsModal"><i class="fas fa-cog"></i>&nbsp;User Settings</a>
+            <li class="pointer">
+                <div class="dropdown">
+                    <a class="nav-link" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-cog"></i>&nbsp;Options
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a href="{{url($user->getUsername() . '/preview')}}" class="dropdown-item" href="" target="_blank"><i class="far fa-eye"></i>&nbsp;Preview Page</a>
+                        <a class="dropdown-item" href="" data-toggle="modal" data-target="#userSettingsModal"><i class="fas fa-cog"></i>&nbsp;User Settings</a>
+                    </div>
+                  </div>
             </li>
+   
           
             @endif
            

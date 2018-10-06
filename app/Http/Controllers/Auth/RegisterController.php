@@ -52,6 +52,9 @@ class RegisterController extends Controller
             'name' => 'required|string|max:30|unique:users,name',
             'email' => 'required|string|email|max:255|unique:users,email',
             'password' => 'required|string|min:6|confirmed',
+            'user_name'   => 'honeypot',
+            'user_time'   => 'required|honeytime:3',
+            'g-recaptcha-response' => 'required|captcha'
         ]);
     }
 

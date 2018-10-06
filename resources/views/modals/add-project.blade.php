@@ -32,8 +32,8 @@ addProjectModal
     </div>
 
     <div class="form-group">
-        <label for="title">Project title</label>
-        <input type="text" class="form-control {{ (session('source') == 'add' && $errors->has('title')) ? ' is-invalid' : '' }}"  name="title" placeholder="The title of your project" value="{{ old('title') }}">
+        <label for="title">Project title&nbsp;<small class="text-muted">(required)</small></label>
+        <input type="text" class="form-control {{ (session('source') == 'add' && $errors->has('title')) ? ' is-invalid' : '' }}"  name="title" placeholder="The title of your project" value="{{ old('title') }}" required>
         @if (session('source') == 'add' && $errors->has('title'))
         <span class="invalid-feedback">
             <strong>{{ $errors->first('title') }}</strong>
@@ -45,8 +45,8 @@ addProjectModal
    
 
     <div class="form-group">
-            <label for="description">Description</label>
-           <textarea name="description" class="form-control {{ (session('source') == 'add' && $errors->has('description')) ? ' is-invalid' : '' }}" placeholder="A short description" rows="4">{{ old('description') }}</textarea>
+            <label for="description">Description&nbsp;<small class="text-muted">(required)</small></label>
+           <textarea name="description" class="form-control {{ (session('source') == 'add' && $errors->has('description')) ? ' is-invalid' : '' }}" placeholder="A short description" rows="4" required>{{ old('description') }}</textarea>
            @if (session('source') == 'add' && $errors->has('description'))
            <span class="invalid-feedback">
                <strong>{{ $errors->first('description') }}</strong>
@@ -56,8 +56,8 @@ addProjectModal
    
 
     <div class="form-group">
-        <label for="link">Link (optional)</label>
-        <input type="text" class="form-control {{ (session('source') == 'add' && $errors->has('link')) ? ' is-invalid' : '' }}"   name="link" placeholder="A link to your project" value="{{  old('link') }}">
+        <label for="link">Link</label>
+        <input type="url" class="form-control {{ (session('source') == 'add' && $errors->has('link')) ? ' is-invalid' : '' }}"   name="link" placeholder="Link to your project" value="{{  old('link') }}">
         @if (session('source') == 'add' && $errors->has('link'))
         <span class="invalid-feedback">
             <strong>{{ $errors->first('link') }}</strong>
@@ -68,7 +68,7 @@ addProjectModal
     <div class="form-group">
             <label for="tags">Tag(s)</label>
             <input type="text" class="form-control {{ (session('source') == 'add' && $errors->has('tags')) ? ' is-invalid' : '' }}"  name="tags" placeholder="Comma separated tags e.g: creative, mobile, ..." value="{{ old('tags') }}">
-            
+            <small class="form-text text-muted">Comma separated tags</small>
             @if (session('source') == 'add' && $errors->has('tags'))
             <span class="invalid-feedback">
                 <strong>{{ $errors->first('tags') }}</strong>

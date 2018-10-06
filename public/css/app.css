@@ -276,13 +276,42 @@ text-decoration: none; }
 /* ------------------- */
 
 /* --- CUSTOM BTN --- */
+
+.bordered-link {
+    display: inline-block;
+    padding: 8px;
+    border: 3px solid #f1f1f1;
+    border-radius: 6px;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2), inset 0 2px 1px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    font-size: 14px;
+    /* text-transform: uppercase; */
+    color: #3b463c;
+    background-color: white;
+    cursor:pointer;
+  }
+  
+  .bordered-link:hover  { border-color: #9dd1e8; }
+
+  .bg-yellow{
+    background-color:#fffde7;
+  }
+  
 .btn{
     border-radius:0px;
+    font-family: 'Open Sans', sans-serif !important;
     /* box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12) !important; */
+
 }
 
 .btn-secondary{
 
+}
+
+.btn-light{
+    /* color: #212529;
+    background-color: #fdfdfdfc;
+    border-color: #eaeaea; */
 }
 
 .btn-primary{
@@ -308,6 +337,9 @@ text-decoration: none; }
 }
 /* ----------------- */
 
+nav .pointer{
+    cursor: pointer ;
+}
 
 @media only screen and (max-width: 500px) {
     body{

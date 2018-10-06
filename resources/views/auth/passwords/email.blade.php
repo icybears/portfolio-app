@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+            <div class="card auth component shadow-sm">
+                <div class="card-header"><h3>{{ __('Reset Password') }}</h3></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -31,6 +31,17 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">{!! NoCaptcha::display() !!}</div>
+                          <div class="col-md-6 offset-md-4">
+                                @if ($errors->has('g-recaptcha-response'))
+                                <span class="text-danger">
+                                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                </span>
+                                @endif
+                          </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -44,4 +55,5 @@
         </div>
     </div>
 </div>
+{!! NoCaptcha::renderJs() !!}
 @endsection

@@ -12,11 +12,12 @@ editAboutModal
 <form id="editAboutForm" method="post" enctype="multipart/form-data" action="{{ auth()->user()->getUsername() . '/about/edit' }}">
     @csrf
 
-    @include('partials.progress')
+    
 
     <div id="imgPreviewWrapper">
         <img id="imgPreview" class="d-block mx-auto rounded-circle" src="{{ $user->getImageUrl() }}" alt="{{ $user->getUsername() . ' profile picture' }}">
     </div>
+   
     <div class="form-group">
 
         <label  for="image">Profile Picture</label>
@@ -33,8 +34,8 @@ editAboutModal
     </div>
 
     <div class="form-group">
-        <label for="fullName">Full Name</label>
-        <input type="text" class="form-control {{ session('source') == 'editAbout' && $errors->has('fullName') ? ' is-invalid' : '' }}" id="fullName" name="fullName" placeholder="Who you are" value="{{ old('fullName') ?? $user->fullName }}">
+        <label for="fullName">Full Name&nbsp;<small class="text-muted">(required)</small></label>
+        <input type="text" class="form-control {{ session('source') == 'editAbout' && $errors->has('fullName') ? ' is-invalid' : '' }}" id="fullName" name="fullName" placeholder="Who you are" value="{{ old('fullName') ?? $user->fullName }}" required>
         @if (session('source') == 'editAbout' && $errors->has('fullName'))
         <span class="invalid-feedback">
             <strong>{{ $errors->first('fullName') }}</strong>
@@ -54,7 +55,7 @@ editAboutModal
     </div>
 
     <div class="form-group">
-            <label for="description">Description</label>
+            <label for="description">Short Resume</label>
            <textarea name="description" class="form-control {{ session('source') == 'editAbout' && $errors->has('description') ? ' is-invalid' : '' }}"  placeholder="A short resume" rows="4">{{ old('description') ?? $user->description }}</textarea>
            @if (session('source') == 'editAbout' && $errors->has('description'))
            <span class="invalid-feedback">
@@ -72,7 +73,7 @@ editAboutModal
          @if( session('source') == 'editAbout' && $errors->any() )
             <script>
                $(document).ready(function () {
-                console.log('fired edit-about ');
+                
                    
                     $('#editAboutModal').modal('show');
                });
