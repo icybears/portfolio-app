@@ -67,8 +67,8 @@ addProjectModal
 
     <div class="form-group">
             <label for="tags">Tag(s)</label>
-            <input type="text" class="form-control {{ (session('source') == 'add' && $errors->has('tags')) ? ' is-invalid' : '' }}"  name="tags" placeholder="Comma separated tags e.g: creative, mobile, ..." value="{{ old('tags') }}">
-            <small class="form-text text-muted">Comma separated tags</small>
+            <input type="text" class="form-control {{ (session('source') == 'add' && $errors->has('tags')) ? ' is-invalid' : '' }}" id="tags" name="tags" placeholder="Comma separated tags e.g: creative, mobile, ..." value="{{ old('tags') }}">
+            <small class="text-muted">Comma separated tags</small>
             @if (session('source') == 'add' && $errors->has('tags'))
             <span class="invalid-feedback">
                 <strong>{{ $errors->first('tags') }}</strong>

@@ -26,8 +26,9 @@ class HomeController extends Controller
     {
         if(auth()->check())
         {
-            $user = User::find(auth()->id());
-            return view('user.page', compact('user'));
+            // $user = User::find(auth()->id());
+            // return view('user.page', compact('user'));
+            return redirect(auth()->user()->getUsername());
         } else {
             return view('landing');
         }

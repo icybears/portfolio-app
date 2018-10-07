@@ -70,6 +70,7 @@ body {
 
 .masthead-brand {
   margin-bottom: 0;
+  font-family: "Display fair", serif !important;
 }
 
 .nav-masthead .nav-link {

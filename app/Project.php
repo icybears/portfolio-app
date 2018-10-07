@@ -13,7 +13,7 @@ class Project extends Model
 
     static public $rules =  [
         'title' => 'min:2|max:60',
-        'description' => 'min:2|max:320',
+        'description' => 'min:2|max:220',
         'link' => 'url|max:120|nullable',
         'tags' => 'string|nullable',
         'image' => 'mimes:jpeg,jpg,png|dimensions:min_width=100,min_height=100|between:1,2000'          

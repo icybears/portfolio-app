@@ -25,7 +25,7 @@
 
       <footer class="mastfoot mt-auto">
         <div class="inner">
-          <p>Copyright &copy; Saber 2018 </p>
+          <p><strong>Copyright &copy; Sabercrafts 2018 </strong></p>
         </div>
       </footer>
     </div>

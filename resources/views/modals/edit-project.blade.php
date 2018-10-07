@@ -33,7 +33,7 @@ editProjectModal{{$project->getId()}}
     </div>
 
     <div class="form-group">
-        <label for="title">Project title</label>
+        <label for="title">Project title&nbsp;<small class="text-muted">(required)</small></label>
         <input type="text" class="form-control {{ (session('modal') == strval($project->getId()) && $errors->has('title')) ? ' is-invalid' : '' }}"  name="title" placeholder="The title of your project" value="{{ old('title') ?? $project->getTitle() }} ">
         @if (session('modal') == strval($project->getId()) && $errors->has('title'))
         <span class="invalid-feedback">
@@ -46,7 +46,7 @@ editProjectModal{{$project->getId()}}
    
 
     <div class="form-group">
-            <label for="description">Description</label>
+            <label for="description">Description&nbsp;<small class="text-muted">(required)</small></label>
            <textarea name="description" class="form-control {{ (session('modal') == strval($project->getId()) && $errors->has('description')) ? ' is-invalid' : '' }}"  placeholder="A short description" rows="4">{{ old('description') ?? $project->getDescription() }}</textarea>
            @if (session('modal') == strval($project->getId()) && $errors->has('description'))
            <span class="invalid-feedback">
@@ -69,7 +69,7 @@ editProjectModal{{$project->getId()}}
 <div class="form-group">
         <label for="tags">Tag(s)</label>
         <input type="text" class="form-control {{ (session('modal') == strval($project->getId()) && $errors->has('tags')) ? ' is-invalid' : '' }}" id="tags{{ $project->getId() }}" name="tags" placeholder="Comma separated tags e.g: creative, mobile, ..." value="{{ old('tags') ?? $project->getTags() }}">
-        
+        <small class="text-muted">Comma separated tags</small>
         @if (session('modal') == strval($project->getId()) && $errors->has('tags'))
         <span class="invalid-feedback">
             <strong>{{ $errors->first('tags') }}</strong>
