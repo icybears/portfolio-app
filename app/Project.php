@@ -16,7 +16,7 @@ class Project extends Model
         'description' => 'min:2|max:220',
         'link' => 'url|max:120|nullable',
         'tags' => 'string|nullable',
-        'image' => 'mimes:jpeg,jpg,png|dimensions:min_width=100,min_height=100|between:1,2000'          
+        'image' => 'mimes:jpeg,jpg,png|dimensions:min_width=100,min_height=100,max_height=1000,max_width=1000|between:1,1000'          
     ];
 
     public function getId()

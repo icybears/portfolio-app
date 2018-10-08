@@ -99,7 +99,9 @@ h1{
 
 #profileImg{
     width:200px;
+    height:200px;
     margin:auto;
+   
 }
 #profileImg > img{
     width:100%;
@@ -133,6 +135,11 @@ h1{
 }
 .project .dropdown{
     z-index: 3;
+}
+.project-link{
+    position: absolute !important;
+    top: -50px !important;
+    right: 20px !important;
 }
 .project .dropdown > a{
     position: absolute;

@@ -23,26 +23,27 @@ class Image
 
                $image_name = $image->getRealPath();
 
-                try{
+                // try{
                 Cloudder::upload($image_name,null, array("timeout" => 60));
                
-                } catch(\Exception $e)
-                {
-                    report($e);
-                    abort(500);
-                }
+                // } catch(\Exception $e)
+                // {
+                    // report($e);
+                    // abort(500);
+
+                // }
         
                list($width, $height) = getimagesize($image_name);
 
-                try{
+                // try{
                     $image_name = Cloudder::getPublicId();
                     $image_url= Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
-                }
-                catch(\Exception $e)
-                {
-                    report($e);
-                    abort(500);
-                }
+                // }
+                // catch(\Exception $e)
+                // {
+                    // report($e);
+                    // abort(500);
+                // }
              
             return ['image_name'=> $image_name,'image_url' => $image_url];
            

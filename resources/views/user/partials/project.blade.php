@@ -10,11 +10,11 @@
     @endif
     <div class="card-img-top-wrapper"><img class="card-img-top" src="{{ $project->getImageUrl() }}" alt="{{$project->title . ' image' }}"></div>
     <div class="card-body">
-            
+        @if($project->link)
+        <a class="btn btn-primary btn-sm project-link" href="{{ $project->link }}" target="_blank"><i class="fas fa-link"></i>&nbsp;Link</a>
+        @endif
         <h5 class="card-title">{{ $project->title }}
-            @if($project->link)
-            <a class="btn btn-primary btn-sm float-right" href="{{ $project->link }}" target="_blank"><i class="fas fa-link"></i>&nbsp;Link</a>
-            @endif</h5>
+            </h5>
         <p class="card-text">{{ $project->description }}</p>
         <p class="card-text">
             <span class="text-muted"> 

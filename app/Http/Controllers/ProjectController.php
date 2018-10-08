@@ -40,7 +40,14 @@ class ProjectController extends Controller
         if(request('image'))
         {
            
+            try{
                 $project->setImage(request('image'));
+                
+            } 
+            catch(\Exception $e){
+                report($e);
+                return back()->with(['message'=>'Problem setting the image','class'=> 'warning']);
+            }
             
         }
 

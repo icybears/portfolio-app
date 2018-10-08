@@ -72,13 +72,13 @@ class UsersController extends Controller
         User::where('id', auth()->id())
             ->update(['password' => bcrypt(request('newPassword'))]);
         
-            return back()->with(
+            return redirect('/')->with(
                 ['message' =>'Password changed successfully',
                 'class' => 'success'
                 ]);
     
     } else {
-        return back()->with(
+        return redirect('/')->with(
             ['message' =>'Invalid current password',
             'class' => 'warning'
             ]);
@@ -103,13 +103,13 @@ class UsersController extends Controller
         User::where('id', auth()->id())
             ->update(['name' => request('newUsername')]);
         
-            return back()->with(
+            return redirect('/')->with(
                 ['message' =>'Username changed successfully',
                 'class' => 'success'
                 ]);
     
     } else {
-        return back()->with(
+        return redirect('/')->with(
             ['message' =>'Invalid current password',
             'class' => 'warning'
             ]);
