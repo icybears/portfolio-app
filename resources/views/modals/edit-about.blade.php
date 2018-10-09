@@ -15,7 +15,7 @@ editAboutModal
     
 
     <div id="imgPreviewWrapper">
-        <img id="imgPreview" class="d-block mx-auto rounded-circle" src="{{ $user->getImageUrl() }}" alt="{{ $user->getUsername() . ' profile picture' }}">
+        <img id="imgPreview" class="mx-auto rounded-circle" src="{{ $user->getImageUrl() }}" alt="{{ $user->getUsername() . ' profile picture' }}">
     </div>
    
     <div class="form-group">
@@ -24,7 +24,8 @@ editAboutModal
         <input type="file" name="image" accept=".png, .jpg, .jpeg" class="form-control-file {{ session('source') == 'editAbout' && $errors->has('image') ? ' is-invalid' : '' }}" id="image"
         onchange="document.getElementById('imgPreview').src = window.URL.createObjectURL(this.files[0])"
         >
-        
+        <small class="form-text text-muted">max size 1MB, same width and height, max. 1000x1000</small>
+
         @if (session('source') == 'editAbout' && $errors->has('image'))
         <span class="invalid-feedback">
             <strong>{{ $errors->first('image') }}</strong>

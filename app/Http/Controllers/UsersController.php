@@ -88,7 +88,7 @@ class UsersController extends Controller
    public function changeUsername($username, Request $request)
    {
     $validator = Validator::make($request->all(),  [
-        'newUsername' => 'required|min:2|max:30|unique:users,name'
+        'newUsername' => 'required|min:2|max:30|unique:users,name|alpha_dash'
     ]);
     
             if ($validator->fails()) {
@@ -101,7 +101,7 @@ class UsersController extends Controller
     if(Hash::check(request('currentPassword'), auth()->user()->password ))
     {
         User::where('id', auth()->id())
-            ->update(['name' => request('newUsername')]);
+            ->update(['name' => str_slug(request('newUsername'))]);
         
             return redirect('/')->with(
                 ['message' =>'Username changed successfully',

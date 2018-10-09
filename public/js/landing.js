@@ -13,4 +13,9 @@ $('a[href="#demo"]').click(function() {
           }
         }
       });
+
+      $('.carousel').carousel({
+        pause: "false",
+        interval: 2200,
+    });
     });

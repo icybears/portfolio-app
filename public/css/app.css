@@ -91,10 +91,23 @@ h1{
 #imgPreviewWrapper{
     width:200px;
     margin: auto;
+    position:relative;
 }
 
 #imgPreview{
     width:100%;
+    position:relative;
+}
+#imgPreview::after{
+    content:"";
+    position: relative;
+    top:0;
+    left:0;
+    height: 200px;
+    width:200px;
+    z-index: 5;
+    background-color: red;
+    border-radius: 100%;
 }
 
 #profileImg{

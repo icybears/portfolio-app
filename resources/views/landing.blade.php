@@ -19,9 +19,8 @@
         <h1 class="cover-heading">Forewords &ndash; Your online portfolio</h1>
         <p class="lead">Create a free online page to showcase your valuable skills and work.</p>
         <p class="lead">
-          <!-- <a href="{{ route('register') }}" class="btn btn-lg btn-primary">Create your page</a> -->
-          <a href="#demo" class="btn btn-lg btn-primary roundedBtn">See Demonstration</a>
-          <a id="createPage" href="{{ route('register') }}" class="btn btn-lg btn-success ml-2">Create Your Free Page Now</a>
+          <a href="#demo" class="btn btn-lg btn-primary roundedBtn">Demonstration</a>
+          <a id="createPage" href="{{ route('register') }}" class="btn btn-lg btn-light ml-2 mt-2 roundedBtn">Create Your Free Page Now</a>
         </p>
       </main>
 
@@ -32,13 +31,13 @@
       </footer>
     </div>
     <div id="demo" class="d-flex w-100 p-3 mx-auto flex-column">
-      <h1 id="demoHeading">Demo</h1>
+      <h1 id="demoHeading">What It Looks Like</h1>
       <div id="carouselContainer" class="container">
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <div id="carousel" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li  data-target="#carousel" data-slide-to="0" class="active"></li>
+                <li  data-target="#carousel" data-slide-to="1"></li>
+                <li  data-target="#carousel" data-slide-to="2"></li>
               </ol>
               <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -51,15 +50,16 @@
                   <img class="d-block w-100" src="{{ asset('img/demo3.jpg') }}" alt="Third slide">
                 </div>
               </div>
-              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
+                <span  class="sr-only">Previous</span>
               </a>
-              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
+                <span  class="sr-only">Next</span>
               </a>
             </div>
       </div>
     </div>
+   
 @include('partials.landing-foot')
