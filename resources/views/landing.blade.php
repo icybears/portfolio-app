@@ -3,7 +3,7 @@
 
   <body class="text-center">
     <div class="bg-wrapper"></div>
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <div class="cover-container d-flex p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
         <div class="inner">
           <h3 class="masthead-brand">Forewords</h3>
@@ -26,7 +26,7 @@
 
       <footer class="mastfoot mt-auto">
         <div class="inner">
-          <p><strong>Copyright &copy; Sabercrafts 2018 </strong></p>
+          <p><strong>Copyright &copy; Sabercrafts 2018</strong>&nbsp;&mdash;&nbsp;<a href="mailto:sabercrafts@gmail.com">Contact us</a></p>
         </div>
       </footer>
     </div>
@@ -61,5 +61,6 @@
             </div>
       </div>
     </div>
+    
    
 @include('partials.landing-foot')

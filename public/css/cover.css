@@ -70,6 +70,7 @@ body {
 .cover-container {
   max-width: 42em;
   z-index: 4;
+  height:100% !important;
 }
 .lead a{
   text-shadow: none;
@@ -143,16 +144,6 @@ body {
   background-color: #50b2ff !important;
 }
 
-
-@media (min-width: 48em) {
-  .masthead-brand {
-    float: left;
-  }
-  .nav-masthead {
-    float: right;
-  }
-}
-
 .btn-primary{
   background-color: #2196F3;
   border-color: #2196F3;
@@ -180,3 +171,15 @@ body {
 .mastfoot {
   color: rgba(255, 255, 255, 0.85);
 }
+
+
+
+@media (min-width: 48em) {
+  .masthead-brand {
+    float: left;
+  }
+  .nav-masthead {
+    float: right;
+  }
+}
+
