@@ -5,15 +5,15 @@ This application is currently hosted at: http://forewords.herokuapp.com/ (note t
 
 # Selected screenshots
 ### Landing page
-![Landing page](screenshots/landing.png?raw=true "Landing page")
+![landing page](https://user-images.githubusercontent.com/24890695/100631699-4a1e2800-332c-11eb-9bae-57392705fe54.png)
 
 ### Registration page
-![Registration page](screenshots/registration.png?raw=true "Registration page")
+![registration page](https://user-images.githubusercontent.com/24890695/100631926-881b4c00-332c-11eb-8cde-5f81e704f14b.png)
 
 ### Example user pages
 
-![Example user page 1](screenshots/Screenshot_1.jpg?raw=true "Example user page 1")
+![Screenshot_2](https://user-images.githubusercontent.com/24890695/100631918-85b8f200-332c-11eb-84ff-7a3b2165549a.jpg)
 
-![Example user page 2](screenshots/Screenshot_2.jpg?raw=true "Example user page 2")
+![Screenshot_3](https://user-images.githubusercontent.com/24890695/100631924-86ea1f00-332c-11eb-9356-ce1451f2409d.jpg)
 
-![Example user page 3](screenshots/Screenshot_3.jpg?raw=true "Example user page 3")
+![Screenshot_1](https://user-images.githubusercontent.com/24890695/100631929-88b3e280-332c-11eb-89d5-9563e45fb19f.jpg)
